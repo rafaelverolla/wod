@@ -1,4 +1,4 @@
-from tkinter import Button, Toplevel, Entry, Label, Tk
+from tkinter import Button, Toplevel, Entry, Label, Tk, messagebox
 from tkinter import ttk
 import json
 
@@ -515,25 +515,30 @@ class Sheet:
                  return        
                 #message: do you want to overwrite the 
                 # sheet named self.ui.entry_name.get()? if yes, go to else, if no, get out of the function
-                #elif no:  commented out to implement later
-		    else:               
+                #elif no:  commented out to implement later 
+            else:              
                 #sheet isnt name 0, have a unique name or the user wants to overwrite the sheet, you can proceed to save
                 ##### Save procedure #####
                 x = ''
                 x = self.ui.d["name"].get()
                 data[x] = data['0'] # data['0'] is the empty form for the sheets
+                #data['0']is also receiving all the new info, but that is not much of an issue.
                 #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
                 #data[x]["name"] = self.d["name"].get()
                 for key,value in data[x].items():#this is the loop to get all nested dictionarys, 2 levels in
                     if type(value) == dict:
                         for k,v in value.items():
                             if type(v) == dict:
-                                for p,x in v.items():
-                                    data[x][key][k][p] = self.d[p].get()
+                                for p,y in v.items():# p é key, x é value
+                                    print(x)
+                                    print(key)
+                                    print(k)
+                                    print(p)
+                                    data[x][key][k][p] = self.ui.d[p].get()
                             else:
-                                data[x][key][k] = self.d[k].get()   
+                                data[x][key][k] = self.ui.d[k].get()   
                     else:
-                        data[x][key] = self.d[key].get()
+                        data[x][key] = self.ui.d[key].get()
            
 
         with open('output.json', 'w') as f: #dump the changes into the json file

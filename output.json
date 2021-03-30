@@ -1,182 +1,362 @@
 {
-  "sheets": [
-    {
-      "ID": 1,
-      "Name": "Capitao",
-      "Nature": "",
-      "Faction": "",
-      "Player": "",
-      "Demeanor": "",
-      "Cabal": "",
-      "Chronicle": "",
-      "Essence": "",
-      "Concept": "Putao",
-      "Atributes": {
-        "Physical": {
-          "Strength": 1,
-          "Dexterity": 1,
-          "Stamina": 1
-        },
-        "Social": {
-          "Charisma": 1,
-          "Manipulation": 1,
-          "Appearance": 1
-        },
-        "Mental": {
-          "Perception": 1,
-          "Intelligence": 1,
-          "Wits": 1
-        }
+  "0": {
+    "name": "teste3",
+    "nature": "",
+    "faction": "",
+    "player": "",
+    "demeanor": "",
+    "cabal": "",
+    "chronicle": "",
+    "essence": "",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "",
+        "dexterity": "",
+        "stamina": ""
       },
-      "Abilities": {
-        "Talents": {
-          "Art": 0,
-          "Athletics": 0,
-          "Awareness": 0,
-          "Brawl": 0,
-          "Empathy": 0,
-          "Expression": 0,
-          "Intimidation": 0,
-          "Leadership": 0,
-          "Streetwise": 0,
-          "Subterfuge": 0
-        },
-        "Skills": {
-          "Crafts": 0,
-          "Drive": 0,
-          "Etiquette": 0,
-          "Firearms": 0,
-          "Martialarts": 0,
-          "Meditation": 0,
-          "Melee": 0,
-          "Research": 0,
-          "Stealth": 0,
-          "Survival": 0,
-          "Technology": 0
-        },
-        "Knowledges": {
-          "Academics": 0,
-          "Computer": 0,
-          "Cosmology": 0,
-          "Enigmas": 0,
-          "Esoterica": 0,
-          "Investigation": 0,
-          "Law": 0,
-          "Medicine": 0,
-          "Occult": 0,
-          "Politics": 0,
-          "Science": 0
-        }
+      "social": {
+        "charisma": "",
+        "manipulation": "",
+        "appearance": ""
       },
-      "Advantages": {
-        "Spheres": {
-          "Correspondence": 0,
-          "Entropy": 0,
-          "Forces": 0,
-          "Life": 0,
-          "Matter": 0,
-          "Mind": 0,
-          "Prime": 0,
-          "Spirit": 0,
-          "Time": 0
-        },
-        "Arete": 1,
-        "Willpower": 5,
-        "Backgrounds": {}
-      },
-      "History": {
-        "Freebies": {},
-        "Xp": {}
+      "mental": {
+        "perception": "",
+        "intelligence": "",
+        "wits": ""
       }
     },
-    {
-      "ID": 2,
-      "Name": "",
-      "Nature": "",
-      "Faction": "",
-      "Player": "",
-      "Demeanor": "",
-      "Cabal": "",
-      "Chronicle": "",
-      "Essence": "",
-      "Concept": "",
-      "Atributes": {
-        "Physical": {
-          "Strength": 1,
-          "Dexterity": 1,
-          "Stamina": 1
-        },
-        "Social": {
-          "Charisma": 1,
-          "Manipulation": 1,
-          "Appearance": 1
-        },
-        "Mental": {
-          "Perception": 1,
-          "Intelligence": 1,
-          "Wits": 1
-        }
+    "abilities": {
+      "talents": {
+        "art": "",
+        "athletics": "",
+        "awareness": "",
+        "brawl": "",
+        "empathy": "",
+        "expression": "",
+        "intimidation": "",
+        "leadership": "",
+        "streetwise": "",
+        "subterfuge": ""
       },
-      "Abilities": {
-        "Talents": {
-          "Art": 0,
-          "Athletics": 0,
-          "Awareness": 0,
-          "Brawl": 0,
-          "Empathy": 0,
-          "Expression": 0,
-          "Intimidation": 0,
-          "Leadership": 0,
-          "Streetwise": 0,
-          "Subterfuge": 0
-        },
-        "Skills": {
-          "Crafts": 0,
-          "Drive": 0,
-          "Etiquette": 0,
-          "Firearms": 0,
-          "Martialarts": 0,
-          "Meditation": 0,
-          "Melee": 0,
-          "Research": 0,
-          "Stealth": 0,
-          "Survival": 0,
-          "Technology": 0
-        },
-        "Knowledges": {
-          "Academics": 0,
-          "Computer": 0,
-          "Cosmology": 0,
-          "Enigmas": 0,
-          "Esoterica": 0,
-          "Investigation": 0,
-          "Law": 0,
-          "Medicine": 0,
-          "Occult": 0,
-          "Politics": 0,
-          "Science": 0
-        }
+      "skills": {
+        "crafts": "",
+        "drive": "",
+        "etiquette": "",
+        "firearms": "",
+        "martialarts": "",
+        "meditation": "",
+        "melee": "",
+        "research": "",
+        "stealth": "",
+        "survival": "",
+        "technology": ""
       },
-      "Advantages": {
-        "Spheres": {
-          "Correspondence": 0,
-          "Entropy": 0,
-          "Forces": 0,
-          "Life": 0,
-          "Matter": 0,
-          "Mind": 0,
-          "Prime": 0,
-          "Spirit": 0,
-          "Time": 0
-        },
-        "Arete": 1,
-        "Willpower": 5,
-        "Backgrounds": {}
-      },
-      "History": {
-        "Freebies": {},
-        "Xp": {}
+      "knowledges": {
+        "academics": "",
+        "computer": "",
+        "cosmology": "",
+        "enigmas": "",
+        "esoterica": "",
+        "investigation": "",
+        "law": "",
+        "medicine": "",
+        "occult": "",
+        "politics": "",
+        "science": ""
       }
+    },
+    "spheres": {
+      "correspondence": "",
+      "entropy": "",
+      "forces": "",
+      "life": "",
+      "matter": "",
+      "mind": "",
+      "prime": "",
+      "spirit": "",
+      "time": ""
+    },
+    "advantages": {
+      "arete": "",
+      "willpower": "",
+      "backgrounds": {},
+      "other traits": {}
+    },
+    "merits and flaws": {},
+    "history": {
+      "freebies": {},
+      "xp": {}
     }
-  ]
+  },
+  "ra": {
+    "name": "ra",
+    "nature": "",
+    "faction": "",
+    "player": "",
+    "demeanor": "",
+    "cabal": "",
+    "chronicle": "",
+    "essence": "",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "",
+        "dexterity": "",
+        "stamina": ""
+      },
+      "social": {
+        "charisma": "",
+        "manipulation": "",
+        "appearance": ""
+      },
+      "mental": {
+        "perception": "",
+        "intelligence": "",
+        "wits": ""
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "",
+        "athletics": "",
+        "awareness": "",
+        "brawl": "",
+        "empathy": "",
+        "expression": "",
+        "intimidation": "",
+        "leadership": "",
+        "streetwise": "",
+        "subterfuge": ""
+      },
+      "skills": {
+        "crafts": "",
+        "drive": "",
+        "etiquette": "",
+        "firearms": "",
+        "martialarts": "",
+        "meditation": "",
+        "melee": "",
+        "research": "",
+        "stealth": "",
+        "survival": "",
+        "technology": ""
+      },
+      "knowledges": {
+        "academics": "",
+        "computer": "",
+        "cosmology": "",
+        "enigmas": "",
+        "esoterica": "",
+        "investigation": "",
+        "law": "",
+        "medicine": "",
+        "occult": "",
+        "politics": "",
+        "science": ""
+      }
+    },
+    "spheres": {
+      "correspondence": "",
+      "entropy": "",
+      "forces": "",
+      "life": "",
+      "matter": "",
+      "mind": "",
+      "prime": "",
+      "spirit": "",
+      "time": ""
+    },
+    "advantages": {
+      "arete": "",
+      "willpower": "",
+      "backgrounds": {},
+      "other traits": {}
+    },
+    "merits and flaws": {},
+    "history": {
+      "freebies": {},
+      "xp": {}
+    }
+  },
+  "marco": {
+    "name": "marco",
+    "nature": "doido",
+    "faction": "as",
+    "player": "rafael",
+    "demeanor": "macaco",
+    "cabal": "minha",
+    "chronicle": "minha",
+    "essence": "dinamic",
+    "concept": "vagabundo",
+    "attributes": {
+      "physical": {
+        "strength": "2",
+        "dexterity": "2",
+        "stamina": "3"
+      },
+      "social": {
+        "charisma": "3",
+        "manipulation": "1",
+        "appearance": "3"
+      },
+      "mental": {
+        "perception": "2",
+        "intelligence": "2",
+        "wits": "3"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "",
+        "athletics": "",
+        "awareness": "",
+        "brawl": "",
+        "empathy": "",
+        "expression": "3",
+        "intimidation": "",
+        "leadership": "",
+        "streetwise": "",
+        "subterfuge": ""
+      },
+      "skills": {
+        "crafts": "",
+        "drive": "",
+        "etiquette": "",
+        "firearms": "3",
+        "martialarts": "",
+        "meditation": "",
+        "melee": "",
+        "research": "",
+        "stealth": "",
+        "survival": "",
+        "technology": ""
+      },
+      "knowledges": {
+        "academics": "2",
+        "computer": "",
+        "cosmology": "",
+        "enigmas": "",
+        "esoterica": "",
+        "investigation": "",
+        "law": "5",
+        "medicine": "",
+        "occult": "",
+        "politics": "",
+        "science": ""
+      }
+    },
+    "spheres": {
+      "correspondence": "1",
+      "entropy": "",
+      "forces": "",
+      "life": "",
+      "matter": "3",
+      "mind": "",
+      "prime": "4",
+      "spirit": "",
+      "time": ""
+    },
+    "advantages": {
+      "arete": "4",
+      "willpower": "3",
+      "backgrounds": {},
+      "other traits": {}
+    },
+    "merits and flaws": {},
+    "history": {
+      "freebies": {},
+      "xp": {}
+    }
+  },
+  "teste3": {
+    "name": "teste3",
+    "nature": "",
+    "faction": "",
+    "player": "",
+    "demeanor": "",
+    "cabal": "",
+    "chronicle": "",
+    "essence": "",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "",
+        "dexterity": "",
+        "stamina": ""
+      },
+      "social": {
+        "charisma": "",
+        "manipulation": "",
+        "appearance": ""
+      },
+      "mental": {
+        "perception": "",
+        "intelligence": "",
+        "wits": ""
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "",
+        "athletics": "",
+        "awareness": "",
+        "brawl": "",
+        "empathy": "",
+        "expression": "",
+        "intimidation": "",
+        "leadership": "",
+        "streetwise": "",
+        "subterfuge": ""
+      },
+      "skills": {
+        "crafts": "",
+        "drive": "",
+        "etiquette": "",
+        "firearms": "",
+        "martialarts": "",
+        "meditation": "",
+        "melee": "",
+        "research": "",
+        "stealth": "",
+        "survival": "",
+        "technology": ""
+      },
+      "knowledges": {
+        "academics": "",
+        "computer": "",
+        "cosmology": "",
+        "enigmas": "",
+        "esoterica": "",
+        "investigation": "",
+        "law": "",
+        "medicine": "",
+        "occult": "",
+        "politics": "",
+        "science": ""
+      }
+    },
+    "spheres": {
+      "correspondence": "",
+      "entropy": "",
+      "forces": "",
+      "life": "",
+      "matter": "",
+      "mind": "",
+      "prime": "",
+      "spirit": "",
+      "time": ""
+    },
+    "advantages": {
+      "arete": "",
+      "willpower": "",
+      "backgrounds": {},
+      "other traits": {}
+    },
+    "merits and flaws": {},
+    "history": {
+      "freebies": {},
+      "xp": {}
+    }
+  }
 }
