@@ -11,7 +11,6 @@ root = Tk()
 root.title('Wod Sheet Manager')
 root.configure(background= "black")
 
-"""teste """
 
 class Sheet_UI:
     def __init__(self):
