@@ -493,11 +493,7 @@ class Sheet:
   
 
     def __init__(self):
-        """
-        self._id= Sheet._id 
-        Sheet._id += 1 
-        self._idstr = str(self._id) 
-        """
+
         self.ui = Sheet_UI()
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 1, row = 34)
@@ -534,9 +530,7 @@ class Sheet:
                             else:
                                 data[x][key][k] = self.ui.d[k].get()   
                     else:
-                        data[x][key] = self.ui.d[key].get()
-           
-
+                        data[x][key] = self.ui.d[key].get()    
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
  
