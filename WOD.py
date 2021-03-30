@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Button, Toplevel, Entry, Label, Tk
 from tkinter import ttk
 import json
 
