@@ -1,5 +1,6 @@
 from tkinter import Button, Toplevel, Entry, Label, Tk, messagebox
 from tkinter import ttk
+import copy
 import json
 
 #Objective: make a WoD sheet manager that let you create an initial char, save it permanently, export/import to/from an excel file.
@@ -488,8 +489,8 @@ class Sheet_UI:
         self.d["mf6c"].grid(column = 5, row = 33)
 
 class Sheet:
-    #resolver: _id começa sempre em 0, tem que começar da última ficha feita. open_sheet tem que estar em um objeto.
-    # passar a ficha para json.
+    #todo:  open_sheet:it  open a sheet from json, put on the ui.
+    # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
   
 
     def __init__(self):
@@ -498,7 +499,7 @@ class Sheet:
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 1, row = 34)
 
-    def save(self):#cria ou um sheets.json file, appenda no file uma sheet que sera reconhecida através do seu ID
+    def save(self):#creates a new entry in the json file. todo: not saving merit flaws and backgrounds.
         
         with open('output.json') as f:
             data = json.load(f)
@@ -517,8 +518,7 @@ class Sheet:
                 ##### Save procedure #####
                 x = ''
                 x = self.ui.d["name"].get()
-                data[x] = data['0'] # data['0'] is the empty form for the sheets
-                #data['0']is also receiving all the new info, but that is not much of an issue.
+                data[x] = copy.deepcopy(data['0']) # data['0'] is the empty form for the sheets
                 #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
                 #data[x]["name"] = self.d["name"].get()
                 for key,value in data[x].items():#this is the loop to get all nested dictionarys, 2 levels in
@@ -526,11 +526,30 @@ class Sheet:
                         for k,v in value.items():
                             if type(v) == dict:
                                 for p,y in v.items():# p é key, x é value
+                                    print(x)
+                                    print(key)
+                                    print(k)
+                                    print(p)
                                     data[x][key][k][p] = self.ui.d[p].get()
                             else:
                                 data[x][key][k] = self.ui.d[k].get()   
                     else:
-                        data[x][key] = self.ui.d[key].get()    
+                        data[x][key] = self.ui.d[key].get() 
+                aux={}
+                aux = {self.ui.d["bg1"].get(): self.ui.d["bg1c"].get(),
+                self.ui.d["bg2"].get(): self.ui.d["bg2c"].get(),self.ui.d["bg3"].get(): self.ui.d["bg3c"].get(),
+                self.ui.d["bg4"].get(): self.ui.d["bg4c"].get(),self.ui.d["bg5"].get(): self.ui.d["bg5c"].get(),
+                self.ui.d["bg6"].get(): self.ui.d["bg6c"].get()}
+                data[x]["advantages"]["backgrounds"]= aux
+                aux = {self.ui.d["ot1"].get(): self.ui.d["ot1c"].get(),
+                self.ui.d["ot2"].get(): self.ui.d["ot2c"].get(),self.ui.d["ot3"].get(): self.ui.d["ot3c"].get(),
+                self.ui.d["ot4"].get(): self.ui.d["ot4c"].get()}
+                data[x]["advantages"]["other traits"]= aux 
+                aux = {self.ui.d["mf1"].get(): self.ui.d["mf1c"].get(),
+                self.ui.d["mf2"].get(): self.ui.d["mf2c"].get(),self.ui.d["mf3"].get(): self.ui.d["mf3c"].get(),
+                self.ui.d["mf4"].get(): self.ui.d["mf4c"].get(),self.ui.d["mf5"].get(): self.ui.d["mf5c"].get(),
+                self.ui.d["mf6"].get(): self.ui.d["mf6c"].get()}
+                data[x]["advantages"]["merits and flaws"]= aux                        
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
  
@@ -539,7 +558,7 @@ class Sheet:
 
 
 
-
+#open should give a list of saved characters. this should be all in a object
 button_open = Button(root, text="Open", width = 20) #command=lambda y = i: open_Sheet(y)
 button_open.grid( column = 0, row = 0)
 

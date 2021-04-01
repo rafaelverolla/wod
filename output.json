@@ -1,6 +1,6 @@
 {
   "0": {
-    "name": "teste3",
+    "name": "teste",
     "nature": "",
     "faction": "",
     "player": "",
@@ -179,98 +179,8 @@
       "xp": {}
     }
   },
-  "marco": {
-    "name": "marco",
-    "nature": "doido",
-    "faction": "as",
-    "player": "rafael",
-    "demeanor": "macaco",
-    "cabal": "minha",
-    "chronicle": "minha",
-    "essence": "dinamic",
-    "concept": "vagabundo",
-    "attributes": {
-      "physical": {
-        "strength": "2",
-        "dexterity": "2",
-        "stamina": "3"
-      },
-      "social": {
-        "charisma": "3",
-        "manipulation": "1",
-        "appearance": "3"
-      },
-      "mental": {
-        "perception": "2",
-        "intelligence": "2",
-        "wits": "3"
-      }
-    },
-    "abilities": {
-      "talents": {
-        "art": "",
-        "athletics": "",
-        "awareness": "",
-        "brawl": "",
-        "empathy": "",
-        "expression": "3",
-        "intimidation": "",
-        "leadership": "",
-        "streetwise": "",
-        "subterfuge": ""
-      },
-      "skills": {
-        "crafts": "",
-        "drive": "",
-        "etiquette": "",
-        "firearms": "3",
-        "martialarts": "",
-        "meditation": "",
-        "melee": "",
-        "research": "",
-        "stealth": "",
-        "survival": "",
-        "technology": ""
-      },
-      "knowledges": {
-        "academics": "2",
-        "computer": "",
-        "cosmology": "",
-        "enigmas": "",
-        "esoterica": "",
-        "investigation": "",
-        "law": "5",
-        "medicine": "",
-        "occult": "",
-        "politics": "",
-        "science": ""
-      }
-    },
-    "spheres": {
-      "correspondence": "1",
-      "entropy": "",
-      "forces": "",
-      "life": "",
-      "matter": "3",
-      "mind": "",
-      "prime": "4",
-      "spirit": "",
-      "time": ""
-    },
-    "advantages": {
-      "arete": "4",
-      "willpower": "3",
-      "backgrounds": {},
-      "other traits": {}
-    },
-    "merits and flaws": {},
-    "history": {
-      "freebies": {},
-      "xp": {}
-    }
-  },
-  "teste3": {
-    "name": "teste3",
+  "teste": {
+    "name": "teste",
     "nature": "",
     "faction": "",
     "player": "",
@@ -350,8 +260,18 @@
     "advantages": {
       "arete": "",
       "willpower": "",
-      "backgrounds": {},
-      "other traits": {}
+      "backgrounds": {
+        "aa": "1",
+        "": ""
+      },
+      "other traits": {
+        "aaa": "2",
+        "": ""
+      },
+      "merits and flaws": {
+        "aaa": "-3",
+        "": ""
+      }
     },
     "merits and flaws": {},
     "history": {
