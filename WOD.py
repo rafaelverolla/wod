@@ -526,10 +526,6 @@ class Sheet:
                         for k,v in value.items():
                             if type(v) == dict:
                                 for p,y in v.items():# p é key, x é value
-                                    print(x)
-                                    print(key)
-                                    print(k)
-                                    print(p)
                                     data[x][key][k][p] = self.ui.d[p].get()
                             else:
                                 data[x][key][k] = self.ui.d[k].get()   
