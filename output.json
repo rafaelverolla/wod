@@ -91,37 +91,37 @@
   },
   "ra": {
     "name": "ra",
-    "nature": "",
-    "faction": "",
-    "player": "",
-    "demeanor": "",
-    "cabal": "",
-    "chronicle": "",
-    "essence": "",
-    "concept": "",
+    "nature": "asdasd",
+    "faction": "dasdas",
+    "player": "aaa",
+    "demeanor": "asfccc",
+    "cabal": "rrreggg",
+    "chronicle": "asdas222",
+    "essence": "asfasxcfas",
+    "concept": "asdfasvsa",
     "attributes": {
       "physical": {
-        "strength": "",
-        "dexterity": "",
-        "stamina": ""
+        "strength": "1",
+        "dexterity": "2",
+        "stamina": "3"
       },
       "social": {
-        "charisma": "",
-        "manipulation": "",
-        "appearance": ""
+        "charisma": "3",
+        "manipulation": "1",
+        "appearance": "2"
       },
       "mental": {
-        "perception": "",
-        "intelligence": "",
-        "wits": ""
+        "perception": "0",
+        "intelligence": "0",
+        "wits": "0"
       }
     },
     "abilities": {
       "talents": {
-        "art": "",
-        "athletics": "",
-        "awareness": "",
-        "brawl": "",
+        "art": "1",
+        "athletics": "2",
+        "awareness": "2",
+        "brawl": "3",
         "empathy": "",
         "expression": "",
         "intimidation": "",
@@ -157,215 +157,21 @@
       }
     },
     "spheres": {
-      "correspondence": "",
+      "correspondence": "2",
       "entropy": "",
       "forces": "",
-      "life": "",
-      "matter": "",
+      "life": "2",
+      "matter": "2",
       "mind": "",
       "prime": "",
       "spirit": "",
       "time": ""
     },
     "advantages": {
-      "arete": "",
-      "willpower": "",
+      "arete": "2",
+      "willpower": "2",
       "backgrounds": {},
       "other traits": {}
-    },
-    "merits and flaws": {},
-    "history": {
-      "freebies": {},
-      "xp": {}
-    }
-  },
-  "teste": {
-    "name": "teste",
-    "nature": "",
-    "faction": "",
-    "player": "",
-    "demeanor": "",
-    "cabal": "",
-    "chronicle": "",
-    "essence": "",
-    "concept": "",
-    "attributes": {
-      "physical": {
-        "strength": "",
-        "dexterity": "2",
-        "stamina": ""
-      },
-      "social": {
-        "charisma": "0",
-        "manipulation": "2",
-        "appearance": ""
-      },
-      "mental": {
-        "perception": "",
-        "intelligence": "",
-        "wits": ""
-      }
-    },
-    "abilities": {
-      "talents": {
-        "art": "",
-        "athletics": "",
-        "awareness": "",
-        "brawl": "",
-        "empathy": "",
-        "expression": "",
-        "intimidation": "",
-        "leadership": "",
-        "streetwise": "",
-        "subterfuge": ""
-      },
-      "skills": {
-        "crafts": "",
-        "drive": "",
-        "etiquette": "",
-        "firearms": "",
-        "martialarts": "",
-        "meditation": "",
-        "melee": "",
-        "research": "",
-        "stealth": "",
-        "survival": "",
-        "technology": ""
-      },
-      "knowledges": {
-        "academics": "",
-        "computer": "",
-        "cosmology": "",
-        "enigmas": "",
-        "esoterica": "",
-        "investigation": "",
-        "law": "",
-        "medicine": "",
-        "occult": "",
-        "politics": "",
-        "science": ""
-      }
-    },
-    "spheres": {
-      "correspondence": "",
-      "entropy": "",
-      "forces": "",
-      "life": "",
-      "matter": "",
-      "mind": "",
-      "prime": "",
-      "spirit": "",
-      "time": ""
-    },
-    "advantages": {
-      "arete": "",
-      "willpower": "",
-      "backgrounds": {
-        "": ""
-      },
-      "other traits": {
-        "": ""
-      },
-      "merits and flaws": {
-        "": ""
-      }
-    },
-    "merits and flaws": {},
-    "history": {
-      "freebies": {},
-      "xp": {}
-    }
-  },
-  "teste2": {
-    "name": "teste2",
-    "nature": "",
-    "faction": "",
-    "player": "",
-    "demeanor": "",
-    "cabal": "",
-    "chronicle": "",
-    "essence": "",
-    "concept": "",
-    "attributes": {
-      "physical": {
-        "strength": "",
-        "dexterity": "",
-        "stamina": ""
-      },
-      "social": {
-        "charisma": "2",
-        "manipulation": "",
-        "appearance": "1"
-      },
-      "mental": {
-        "perception": "",
-        "intelligence": "",
-        "wits": ""
-      }
-    },
-    "abilities": {
-      "talents": {
-        "art": "",
-        "athletics": "",
-        "awareness": "",
-        "brawl": "",
-        "empathy": "",
-        "expression": "",
-        "intimidation": "",
-        "leadership": "",
-        "streetwise": "",
-        "subterfuge": ""
-      },
-      "skills": {
-        "crafts": "",
-        "drive": "",
-        "etiquette": "",
-        "firearms": "",
-        "martialarts": "",
-        "meditation": "",
-        "melee": "",
-        "research": "",
-        "stealth": "",
-        "survival": "",
-        "technology": ""
-      },
-      "knowledges": {
-        "academics": "",
-        "computer": "",
-        "cosmology": "",
-        "enigmas": "",
-        "esoterica": "",
-        "investigation": "",
-        "law": "",
-        "medicine": "",
-        "occult": "",
-        "politics": "",
-        "science": ""
-      }
-    },
-    "spheres": {
-      "correspondence": "",
-      "entropy": "",
-      "forces": "",
-      "life": "",
-      "matter": "",
-      "mind": "",
-      "prime": "",
-      "spirit": "",
-      "time": ""
-    },
-    "advantages": {
-      "arete": "",
-      "willpower": "",
-      "backgrounds": {
-        "": ""
-      },
-      "other traits": {
-        "": ""
-      },
-      "merits and flaws": {
-        "": ""
-      }
     },
     "merits and flaws": {},
     "history": {
