@@ -192,12 +192,12 @@
     "attributes": {
       "physical": {
         "strength": "",
-        "dexterity": "",
+        "dexterity": "2",
         "stamina": ""
       },
       "social": {
-        "charisma": "",
-        "manipulation": "",
+        "charisma": "0",
+        "manipulation": "2",
         "appearance": ""
       },
       "mental": {
@@ -261,15 +261,109 @@
       "arete": "",
       "willpower": "",
       "backgrounds": {
-        "aa": "1",
         "": ""
       },
       "other traits": {
-        "aaa": "2",
         "": ""
       },
       "merits and flaws": {
-        "aaa": "-3",
+        "": ""
+      }
+    },
+    "merits and flaws": {},
+    "history": {
+      "freebies": {},
+      "xp": {}
+    }
+  },
+  "teste2": {
+    "name": "teste2",
+    "nature": "",
+    "faction": "",
+    "player": "",
+    "demeanor": "",
+    "cabal": "",
+    "chronicle": "",
+    "essence": "",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "",
+        "dexterity": "",
+        "stamina": ""
+      },
+      "social": {
+        "charisma": "2",
+        "manipulation": "",
+        "appearance": "1"
+      },
+      "mental": {
+        "perception": "",
+        "intelligence": "",
+        "wits": ""
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "",
+        "athletics": "",
+        "awareness": "",
+        "brawl": "",
+        "empathy": "",
+        "expression": "",
+        "intimidation": "",
+        "leadership": "",
+        "streetwise": "",
+        "subterfuge": ""
+      },
+      "skills": {
+        "crafts": "",
+        "drive": "",
+        "etiquette": "",
+        "firearms": "",
+        "martialarts": "",
+        "meditation": "",
+        "melee": "",
+        "research": "",
+        "stealth": "",
+        "survival": "",
+        "technology": ""
+      },
+      "knowledges": {
+        "academics": "",
+        "computer": "",
+        "cosmology": "",
+        "enigmas": "",
+        "esoterica": "",
+        "investigation": "",
+        "law": "",
+        "medicine": "",
+        "occult": "",
+        "politics": "",
+        "science": ""
+      }
+    },
+    "spheres": {
+      "correspondence": "",
+      "entropy": "",
+      "forces": "",
+      "life": "",
+      "matter": "",
+      "mind": "",
+      "prime": "",
+      "spirit": "",
+      "time": ""
+    },
+    "advantages": {
+      "arete": "",
+      "willpower": "",
+      "backgrounds": {
+        "": ""
+      },
+      "other traits": {
+        "": ""
+      },
+      "merits and flaws": {
         "": ""
       }
     },

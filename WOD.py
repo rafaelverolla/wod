@@ -10,7 +10,7 @@ import json
 
 root = Tk()
 root.title('Wod Sheet Manager')
-root.configure(background= "black")
+root.configure(background= "dark grey")
 
 
 class Sheet_UI:
@@ -499,8 +499,45 @@ class Sheet:
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 1, row = 34)
 
+     
+
+    def sum(self,name,category):#give the sum of points of a certain category.
+        sum= 0
+        with open('output.json') as f:
+            data = json.load(f)
+
+        if name in data.key():
+            if category == "physical" or category == "social" or category=="mental":
+                for value in data[name]["attributes"][category].items():
+                    sum+= int(value)
+            elif category == "talents" or category =="skills" or category == "knowledges":
+                for value in data[name]["abilities"][category].items():
+                    sum+= int(value)            
+            elif category == "backgrounds":
+                for value in data[name]["advantages"][category].items():
+                    sum+= int(value)
+            elif category == "spheres":
+                for value in data[name][category].items():
+                    sum+= int(value)                                       
+            elif category == "merits and flaws":
+                for value in data[name][category].items():
+                    sum+= int(value)   
+            else:
+                return "unvalid category"
+            
+            with open('output.json', 'w') as f: #dump the changes into the json file
+                json.dump(data, f, indent = 2) 
+
+            return sum  
+        else:
+            return "unvalid name"
+
+        with open('output.json', 'w') as f: #dump the changes into the json file
+            json.dump(data, f, indent = 2)
+
+
     def save(self):#creates a new entry in the json file. todo: not saving merit flaws and backgrounds.
-        
+       
         with open('output.json') as f:
             data = json.load(f)
         if self.ui.d["name"].get() == '0':
@@ -548,8 +585,8 @@ class Sheet:
                 data[x]["advantages"]["merits and flaws"]= aux                        
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
- 
-
+        
+     
 
 
 
