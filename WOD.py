@@ -503,28 +503,37 @@ class Sheet:
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 1, row = 34)
 
-        button_open = Button(self.ui.window, text= "open", width= 20, command=lambda y="ra":self.openSheet(y))
+        button_open = Button(self.ui.window, text= "open", width= 20, command=lambda y="teste2":self.openSheet(y))
         button_open.grid( column = 2, row = 34)     
 
-    def openSheet(self,name):#static fields are working, dynamic still need to be implemented
+    def openSheet(self,name):
         with open('output.json') as f:
             data = json.load(f)
         
         if name in data.keys():
-            for key,value in data[name].items():#this is the loop to get all nested dictionaries, 2 levels in 
+            for key,value in data[name].items():#this is the loop to get all nested dictionaries, 3 levels in 
                 if type(value) == dict:
-                    for k,v in value.items():
-                        if type(v) == dict:
-                            for p in v.keys():# p é key, name é value
-                                self.ui.d[p].set(data[name][key][k][p])                                
+                    for key1,value1 in value.items():
+                        if type(value1) == dict:#aqui começa para os backgrounds
+                            for key2 in value1.keys():
+                                if type(self.ui.d[key2]) == Entry: 
+                                    self.ui.d[key2].delete(0,END)
+                                    self.ui.d[key2].insert(0,data[name][key][key1][key2])        
+                                else:
+                                    self.ui.d[key2].set(data[name][key][key1][key2])                                  
                         else:
-                            self.ui.d[k].set(data[name][key][k])   
+                            if type(self.ui.d[key1])== Entry:
+                                self.ui.d[key1].delete(0,END)
+                                self.ui.d[key1].insert(0,data[name][key][key1])
+                            else:
+                                self.ui.d[key1].set(data[name][key][key1])   
                 else:
                     if type(self.ui.d[key]) == Entry:
                         self.ui.d[key].delete(0,END) 
-                        self.ui.d[key].insert(0,data[name][key]) 
+                        self.ui.d[key].insert(0,data[name][key])
+                    else:
+                        self.ui.d[key].set(data[name][key])                        
         else:
-
              messagebox.showerror("Character Not Found", "There is no character named " + name)            
 
 
@@ -584,7 +593,7 @@ class Sheet:
                 data[x] = copy.deepcopy(data['0']) # data['0'] is the empty form for the sheets
                 #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
                 #data[x]["name"] = self.d["name"].get()
-                for key,value in data[x].items():#this is the loop to get all nested dictionarys, 2 levels in
+                for key,value in data[x].items():#this is the loop to get all nested dictionaries, present in sheet0, 2 levels in
                     if type(value) == dict:
                         for k,v in value.items():
                             if type(v) == dict:
@@ -594,21 +603,7 @@ class Sheet:
                                 data[x][key][k] = self.ui.d[k].get()   
                     else:
                         data[x][key] = self.ui.d[key].get() 
-                aux={}
-                aux = {self.ui.d["bg1"].get(): self.ui.d["bg1c"].get(),
-                self.ui.d["bg2"].get(): self.ui.d["bg2c"].get(),self.ui.d["bg3"].get(): self.ui.d["bg3c"].get(),
-                self.ui.d["bg4"].get(): self.ui.d["bg4c"].get(),self.ui.d["bg5"].get(): self.ui.d["bg5c"].get(),
-                self.ui.d["bg6"].get(): self.ui.d["bg6c"].get()}
-                data[x]["advantages"]["backgrounds"]= aux
-                aux = {self.ui.d["ot1"].get(): self.ui.d["ot1c"].get(),
-                self.ui.d["ot2"].get(): self.ui.d["ot2c"].get(),self.ui.d["ot3"].get(): self.ui.d["ot3c"].get(),
-                self.ui.d["ot4"].get(): self.ui.d["ot4c"].get()}
-                data[x]["advantages"]["other traits"]= aux 
-                aux = {self.ui.d["mf1"].get(): self.ui.d["mf1c"].get(),
-                self.ui.d["mf2"].get(): self.ui.d["mf2c"].get(),self.ui.d["mf3"].get(): self.ui.d["mf3c"].get(),
-                self.ui.d["mf4"].get(): self.ui.d["mf4c"].get(),self.ui.d["mf5"].get(): self.ui.d["mf5c"].get(),
-                self.ui.d["mf6"].get(): self.ui.d["mf6c"].get()}
-                data[x]["advantages"]["merits and flaws"]= aux                        
+              
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
 
