@@ -27,17 +27,15 @@ def unwrap(name):#unwrap the json sheet into a unested dict
             sheet[key] = data[name][key]      
     return sheet
 
-@bot.command()
-async def ping(ctx):
-    await ctx.channel.send("pronng")
-"""
-@bot.commad(name = "init")
+@bot.command(name = "init")
 async def initiative(ctx, name):
     sheet = unwrap(name)
-    result = ""
-    result= str(random.choice(range(1, 10 + 1) + sheet["dexterity"] + sheet["athletics"])
-    await ctx.send(result)
-"""
+    result = 0
+    result = int(sheet["dexterity"]) + int(sheet["wits"]) + int(sheet["alertness"])
+    result += random.choice(range(1, 10 + 1))
+    await ctx.channel.send(result)
+
+
 @bot.command(name='print')
 async def print(ctx, name, char):
     response=""
