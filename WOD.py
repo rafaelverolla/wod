@@ -16,6 +16,9 @@ class Sheet_UI:
         self.window = root
         root.geometry('800x800')
         vlist= [0,1,2,3,4,5,6,7,8,9]
+        wlist= [5,6,7,8,9,10]
+        priolistAt= [7,5,3]
+        priolistAb=[13,9,5]
         self.d ={}
         c=0
         r=0
@@ -78,14 +81,16 @@ class Sheet_UI:
         #end header
 
         #Start of Attributes , followed column by column, instead of row by row like above.
-        Label(self.window, text= "ATTRIBUTES", background="dark grey").grid(column=3, row=3)
+        Label(self.window, text= "ATTRIBUTES", background="dark grey").grid(column=c+3, row=r+3)
 
-        Label(self.window, text= "Physical", background="dark grey").grid(column=0, row=4)
+        Label(self.window, text= "Physical", background="dark grey").grid(column=c+0, row=r+4)
+
+        self.d["phyPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
+        self.d["phyPrio"].grid(column= c+1, row=r+4)
 
         Label(self.window, text= "Strength", background="dark grey").grid(column = c+0, row = r+5)
 
         self.d["strength"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["strength"].set("0")
         self.d["strength"].grid(column = c+1, row = r+5)
 
         Label(self.window, text="Dexterity", background="dark grey").grid(column = c+0, row = r+6)
@@ -98,7 +103,10 @@ class Sheet_UI:
         self.d["stamina"] = ttk.Combobox(self.window, values = vlist, width = 1)
         self.d["stamina"].grid(column = c+1, row = r+7)
 
-        Label(self.window, text= "Social", background="dark grey").grid(column=2, row=4)
+        Label(self.window, text= "Social", background="dark grey").grid(column=c+2, row=c+4)
+
+        self.d["socPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
+        self.d["socPrio"].grid(column= c+3, row=r+4)
 
         Label(self.window, text= "Charisma", background="dark grey").grid(column = c+2, row = r+5)
 
@@ -115,7 +123,10 @@ class Sheet_UI:
         self.d["appearance"] = ttk.Combobox(self.window, values = vlist, width = 1)
         self.d["appearance"].grid(column = c+3, row = r+7)
 
-        Label(self.window, text= "Mental", background="dark grey").grid(column=4, row=4)
+        Label(self.window, text= "Mental", background="dark grey").grid(column=c+4, row=r+4)
+    
+        self.d["menPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
+        self.d["menPrio"].grid(column= c+5, row=r+4)
 
         Label(self.window, text= "Perception", background="dark grey").grid(column = c+4, row = r+5)
 
@@ -134,9 +145,12 @@ class Sheet_UI:
 
         #start of the abilities
 
-        Label(self.window, text= "Abilities", background="dark grey").grid(column=3, row=8) 
+        Label(self.window, text= "ABILITIES", background="dark grey").grid(column=c+3, row=r+8) 
 
-        Label(self.window, text= "Talents", background="dark grey").grid(column=1, row=9)
+        Label(self.window, text= "Talents", background="dark grey").grid(column=c+0, row=9)
+
+        self.d["talPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
+        self.d["talPrio"].grid(column= c+1, row=r+9)
 
         Label(self.window, text= "Alertness", background="dark grey").grid(column = c+0, row = r+11)
 
@@ -193,7 +207,10 @@ class Sheet_UI:
         self.d["subterfuge"] = ttk.Combobox(self.window, values = vlist, width = 1)
         self.d["subterfuge"].grid(column = c+1, row = r+21)
 
-        Label(self.window, text= "Skills", background="dark grey").grid(column=3, row=9) #skills
+        Label(self.window, text= "Skills", background="dark grey").grid(column=c+2, row=9) #skills
+
+        self.d["skiPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
+        self.d["skiPrio"].grid(column= c+3, row=r+9)
 
         Label(self.window, text= "Crafts", background="dark grey").grid(column = c+2, row = r+11)
 
@@ -250,7 +267,10 @@ class Sheet_UI:
         self.d["technology"] = ttk.Combobox(self.window, values = vlist, width = 1)
         self.d["technology"].grid(column = c+3, row = r+21)
 
-        Label(self.window, text= "Knowledges", background="dark grey").grid(column=5, row=9) #knowledges
+        Label(self.window, text= "Knowledges", background="dark grey").grid(column=c+4, row=9) #knowledges
+
+        self.d["knoPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
+        self.d["knoPrio"].grid(column= c+5, row=r+9)
 
         label_academics = Label(self.window, text= "Academics", background="dark grey")
         label_academics.grid(column = c+4, row = r+11)
@@ -318,7 +338,7 @@ class Sheet_UI:
         self.d["science"] = ttk.Combobox(self.window, values = vlist, width = 1)
         self.d["science"].grid(column = c+5, row = r+21)
 
-        Label(self.window, text= "Spheres", background="dark grey").grid(column=3, row=22) #spheres
+        Label(self.window, text= "SPHERES", background="dark grey").grid(column=c+3, row=c+22) #spheres
 
         label_correspondence = Label(self.window, text="Correspondence", background="dark grey")
         label_correspondence.grid(column = c+0, row = r+23)
@@ -377,7 +397,7 @@ class Sheet_UI:
 
         Label(self.window, text = "ADVANTAGES", background="dark grey").grid(column= 3, row = r+26)
 
-        Label(self.window, text= "Background", background="dark grey").grid(column = c+0, row= 27) #backgrounds
+        Label(self.window, text= "Backgrounds", background="dark grey").grid(column = c+0, row= 27) #backgrounds
 
         self.d["bg1"]= Entry(self.window)
         self.d["bg1"].grid(column = c+0, row = r+28)
@@ -422,7 +442,7 @@ class Sheet_UI:
 
         Label(self.window,text= "Willpower", background="dark grey").grid(column =2, row =28)   #willpower
 
-        self.d["willpower"] = ttk.Combobox(self.window, values = vlist, width = 1)
+        self.d["willpower"] = ttk.Combobox(self.window, values = wlist, width = 1)
         self.d["willpower"].grid(column = c+3, row = r+28)
 
         Label(self.window, text= "Other Traits", background="dark grey").grid(column = c+2, row= 29) #other traits
@@ -494,22 +514,27 @@ class Sheet_UI:
  
 
 class Sheet:
-    #todo:  open_sheet:it  open a sheet from json, put on the ui.
+    #todo:  exports: pdf, excel and plain text.
     # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
   
-    def __init__(self):
+    def __init__(self,name):
 
+        self.name = name
         self.ui = Sheet_UI()
+        
+        if self.name != "":
+            self.openSheet(name)
+        else:
+            self.openSheet("0")
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
-        button_save.grid( column = 1, row = 34)
+        button_save.grid( column = 5, row = 34)
 
-        button_open = Button(self.ui.window, text= "open", width= 20, command=lambda y="teste2":self.openSheet(y))
-        button_open.grid( column = 2, row = 34)     
+  
 
     def openSheet(self,name):
         with open('output.json') as f:
             data = json.load(f)
-        
+
         if name in data.keys():
             for key,value in data[name].items():#this is the loop to get all nested dictionaries, 3 levels in 
                 if type(value) == dict:
@@ -536,7 +561,6 @@ class Sheet:
         else:
              messagebox.showerror("Character Not Found", "There is no character named " + name)            
 
-
     def sum(self,name,category):#give the sum of points of a certain category.
         sum= 0
         with open('output.json') as f:
@@ -549,13 +573,10 @@ class Sheet:
             elif category == "talents" or category =="skills" or category == "knowledges":
                 for value in data[name]["abilities"][category].values():
                     sum+= int(value)            
-            elif category == "backgrounds":
-                for value in data[name]["advantages"][category].values():
-                    sum+= int(value)
-            elif category == "spheres":
+            elif category == "backgrounds" or category == "spheres":
                 for value in data[name][category].values():
-                    sum+= int(value)                                       
-            elif category == "merits and flaws":
+                    sum+= int(value)                                    
+            elif category == "merits and flaws" or category == "other traits":
                 for value in data[name][category].values():
                     sum+= int(value)   
             else:
@@ -602,10 +623,58 @@ class Sheet:
                             else:
                                 data[x][key][k] = self.ui.d[k].get()   
                     else:
-                        data[x][key] = self.ui.d[key].get() 
-              
+                        data[x][key] = self.ui.d[key].get()              
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
+
+"""
+    def validateNewCharacter(self):
+        self.save()
+        with open('output.json') as f:
+            data = json.load(f)
+        
+
+        self.ui["name"](state='disabled')
+        name = ""
+        name = data["name"]["name"]
+        if self.sum(name, "spheres")<6:
+            #messagem : faltam self.sum(name, "spheres") - 6*(-1) pts de esferas
+        elif self.sum(name, "spheres")>6:
+            #message: sobram self.sum(name, "spheres") -6 pts de esferas
+        if self.sum(name, "backgrounds")<7:
+            #message: faltam self.sum(name, "backgrounds") -7*(-1) pts de bg
+        elif self.sum(name, "backgrounds")>7:
+            #message: self.sum(name, "backgrounds") -7 pts de bg
+        priority= {"physical":data["name"]["phyPrio"],"mental":data["name"]["menPrio"],"social":data["name"]["socPrio"]}
+        if priority["physical"] == priority["mental"] or priority["physical"]==priority["social"] or priority["mental"]==priority["social"]:
+            #message: you cannot have 2 categories with the same priority
+        for key in priority.keys():
+            if self.sum(name,key)-3 != int(priority[key]):
+                if sum < points:
+                    #message: faltam points-sum em key
+                else:
+                    #message: sobram sum-points em key
+        priorityAb = {"talents":data["name"]["talPrio"] , "skills":data["name"]["skiPrio"] , "knowledges"data["name"]["knoPrio"]:}
+        if priority["physical"] == priority["mental"] or priority["physical"]==priority["social"] or priority["mental"]==priority["social"]:
+            #message: you cannot have 2 categories with the same priority
+        for key in priorityAb.keys():
+            if self.sum(name,key) != int(priorityAb[key]):
+                if sum < points:
+                    #message: faltam points-sum em key
+                else:
+                    #message: sobram sum-points em key
+        totalFreebiesAtt = (sum(name,"physical") + sum(name,"social") + sum(name,"mental") - 21) *5 #da o total de pontos gastos nos att
+        totalFreebiesAbi = (sum(name,"talents")+ sum(name,"skills") + sum(name,"skills") - 27) *2
+        totalFreebiesBgs = sum(name,"backgrounds") -7
+        totalFreebiesAre = (int(data["name"]["arete"])-1)*4
+        totalFreebiesWil = int(data["name"]["will"])-5
+        totalFreebiesMfs = sum(name,"merits and flaws")
+        totalFreebiesOtt = sum(name, "other traits")*2
+        totalFreebiesSph = (sum(name,"spheres")-6)*7
+
+"""
+
+
 
 class Window(Frame):
     def __init__(self, master=None):
@@ -614,17 +683,22 @@ class Window(Frame):
 
         menu = Menu(self.master)
         self.master.config(menu=menu)
-
+        with open('output.json') as f:
+            data = json.load(f)
+        
         fileMenu = Menu(menu, tearoff=False)
-        fileMenu.add_command(label="New", command = Sheet)
-        fileMenu.add_command(label="Open")
+        empty = ""
+        fileMenu.add_command(label="New", command = lambda y=empty :Sheet(y))
         fileMenu.add_command(label="Exit", command=self.exitProgram)
         menu.add_cascade(label="File", menu=fileMenu)
 
-        editMenu = Menu(menu, tearoff=False)
-        editMenu.add_command(label="Undo")
-        editMenu.add_command(label="Redo")
-        menu.add_cascade(label="Edit", menu=editMenu)
+        openMenu = Menu(menu, tearoff=False)
+        for key in data.keys():
+            if key == "0":
+                print("")#how to instruct do nothing?
+            else:
+                openMenu.add_command(label=key, command=lambda y=key :Sheet(y))
+        menu.add_cascade(label="Open", menu=openMenu)
 
         exportMenu = Menu(menu, tearoff=False)
         exportMenu.add_command(label="Export to PDF")
@@ -641,6 +715,7 @@ root.configure(background= "dark grey")
 root.geometry('700x500')
 
 app = Window(root)
+
 
 
 root.mainloop()
