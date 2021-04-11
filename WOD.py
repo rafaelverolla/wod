@@ -516,7 +516,9 @@ class Sheet_UI:
 class Sheet:
     #todo:  exports: pdf, excel and plain text.
     # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
-  
+    #edit existing character
+    #erase a character
+
     def __init__(self,name):
 
         self.name = name
@@ -524,12 +526,12 @@ class Sheet:
         
         if self.name != "":
             self.openSheet(name)
+            button_erase = Button(self.ui.window, text= "Erase", width = 10, command=  lambda y = self.name: self.erase(y) )
+            button_erase.grid(column = 0, row =34)
         else:
             self.openSheet("0")
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 5, row = 34)
-
-  
 
     def openSheet(self,name):
         with open('output.json') as f:
@@ -627,6 +629,21 @@ class Sheet:
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
 
+    def erase(self, name):
+        res = messagebox.askquestion('askquestion', 'Are you sure you want to erase the sheet?')
+        if res == 'yes':
+            with open('output.json') as f:
+                data = json.load(f)
+            del data[name]
+            with open('output.json', 'w') as f: #dump the changes into the json file
+                json.dump(data, f, indent = 2)
+            messagebox.showinfo('Response', 'Sheet deleted!')
+        elif res == 'no':
+            messagebox.showinfo('Response', 'Phew! Nothing was erased.')
+        else:
+            messagebox.showwarning('error', 'Something went wrong!')
+
+
 """
     def validateNewCharacter(self):
         self.save()
@@ -673,9 +690,6 @@ class Sheet:
         totalFreebiesSph = (sum(name,"spheres")-6)*7
 
 """
-
-
-
 class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -713,9 +727,5 @@ root = Tk()
 root.title('Wod Sheet Manager')
 root.configure(background= "dark grey")
 root.geometry('700x500')
-
 app = Window(root)
-
-
-
 root.mainloop()
