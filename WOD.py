@@ -2,6 +2,7 @@ from tkinter import Button, Toplevel, Entry, Label, Tk, messagebox, Menu, Frame,
 from tkinter import ttk
 import copy
 import json
+import openpyxl
 
 #Objective: make a WoD sheet manager that let you create an initial char, save it permanently, export/import to/from an excel file.
 #The ui must be intuitive. Also more then 1 type of character must be accepted (Mage, Werewolf and Vampire, at least).
@@ -528,6 +529,8 @@ class Sheet:
             self.openSheet(name)
             button_erase = Button(self.ui.window, text= "Erase", width = 10, command=  lambda y = self.name: self.erase(y) )
             button_erase.grid(column = 0, row =34)
+            button_exportExcel = Button(self.ui.window, text= "Export for Excel", width = 10, command=  lambda y = self.name: self.exportExcel(y) )
+            button_exportExcel.grid(column = 4, row =34)
         else:
             self.openSheet("0")
         button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
@@ -642,6 +645,50 @@ class Sheet:
             messagebox.showinfo('Response', 'Phew! Nothing was erased.')
         else:
             messagebox.showwarning('error', 'Something went wrong!')
+
+    def exportExcel(self, name):
+        wb = openpyxl.Workbook()
+        tab = wb.active #tab is the name used for the excel sheet, cant be named sheet because sheet is used for character sheet
+        tab.title = name    
+        r=1
+        c=1
+
+        sheet = self.unwrap(name)
+
+        for key,value in sheet.items():
+            if value == "" and (key.startswith('bg') or key.startswith('mf') or key.startswith('ot')):
+                pass
+            else:
+                if key.startswith('bg') or key.startswith('mf') or key.startswith('ot'):
+                    pass
+                else:
+                    cellref = tab.cell(row = r, column = c)
+                    cellref.value = key + ' :'
+                    c+=1
+                cellref = tab.cell(row = r, column = c)
+                cellref.value = value
+                c+=1
+                if c == 7:
+                    r+=1
+                    c = 1           
+        wb.save(name + '_sheet.xlsx')
+
+    def unwrap(self, name):#unwrap the json sheet into a unested dict
+        sheet = {}
+        with open('output.json') as f:
+            data = json.load(f)
+
+        for key,value in data[name].items():#this is the loop to get all nested dictionaries, 3 levels in, and unwrap in a unested dict
+            if type(value) == dict:
+                for key1,value1 in value.items():
+                    if type(value1) == dict:
+                        for key2 in value1.keys():
+                                sheet[key2] = data[name][key][key1][key2]                                  
+                    else:
+                        sheet[key1] = data[name][key][key1] #bg ot and mf are all recorded here   
+            else:
+                sheet[key] = data[name][key]      
+        return sheet
 
 
 """
