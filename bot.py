@@ -22,12 +22,12 @@ def unwrap(name):#unwrap the json sheet into a unested dict
                     for key2 in value1.keys():
                             sheet[key2] = data[name][key][key1][key2]                                  
                 else:
-                    sheet[key2] = data[name][key][key1]   
+                    sheet[key1] = data[name][key][key1] #bg ot and mf are all recorded here  
         else:
             sheet[key] = data[name][key]      
     return sheet
 
-@bot.command(name = "init")
+@bot.command(name = "init", help="roll initiative\n format: name")
 async def initiative(ctx, name):
     sheet = unwrap(name)
     result = 0
@@ -36,7 +36,7 @@ async def initiative(ctx, name):
     await ctx.channel.send(result)
 
 
-@bot.command(name='print')
+@bot.command(name='print', help="print a characteristic\n format: name characteristic")
 async def print(ctx, name, char):
     response=""
 
@@ -72,7 +72,10 @@ async def roll(ctx, diff: int, name, *args):
     if success == 0 and failure>0:
         result = "CRITICAL FAILURE"
     else:
-        result= str(success- failure) + " successes"
+        if failure>=success:
+            result= str(success- failure) + " failure"
+        else:
+            result= str(success- failure) + " successes"
 
     message = name + str(dice) + "\n" + str(number_of_dice) + " dice rolled for " + result
 
