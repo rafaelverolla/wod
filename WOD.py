@@ -31,14 +31,14 @@ class Sheet_UI:
         self.d["name"] = Entry(self.window)
         self.d["name"].grid(column = c+1, row = r+0)
 
-        label_nature = Label(self.window, text = "Nature", background="dark grey")
-        label_nature.grid(column= c+2, row=0)
+        label_name = Label(self.window, text = "Nature", background="dark grey")
+        label_name.grid(column= c+2, row=0)
 
         self.d["nature"] = Entry(self.window)
         self.d["nature"].grid(column = c+3, row = r+0)
 
-        label_faction = Label(self.window, text = "Faction", background="dark grey")
-        label_faction.grid(column=4, row=0)
+        label_name = Label(self.window, text = "Faction", background="dark grey")
+        label_name.grid(column=4, row=0)
 
         self.d["faction"] = Entry(self.window)
         self.d["faction"].grid(column = c+5, row = r+0)
@@ -646,32 +646,151 @@ class Sheet:
         else:
             messagebox.showwarning('error', 'Something went wrong!')
 
+               
+
     def exportExcel(self, name):
         wb = openpyxl.Workbook()
         tab = wb.active #tab is the name used for the excel sheet, cant be named sheet because sheet is used for character sheet
         tab.title = name    
-        r=1
+        with open('output.json') as f:
+            data = json.load(f)
+
         c=1
+        r=1
+                
+        for key,value in data[name].items():
+            if type(data[name][key])== dict:
+                break      
+            cellref = tab.cell(row = r, column = c)
+            cellref.value = key + ' :'
+            c+=1
+            cellref = tab.cell(row = r, column = c)
+            cellref.value = value
+            c+=1
+            if c == 7:
+                r+=1
+                c = 1  
+        
+        c=1
+        r=6
+        for key in data[name]["attributes"]["physical"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["attributes"]["physical"][key])
+            c-=1
+            r+=1 
 
-        sheet = self.unwrap(name)
+        c=3
+        r=6
+        for key in data[name]["attributes"]["social"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["attributes"]["social"][key])
+            c-=1
+            r+=1 
 
-        for key,value in sheet.items():
-            if value == "" and (key.startswith('bg') or key.startswith('mf') or key.startswith('ot')):
-                pass
-            else:
-                if key.startswith('bg') or key.startswith('mf') or key.startswith('ot'):
-                    pass
-                else:
-                    cellref = tab.cell(row = r, column = c)
-                    cellref.value = key + ' :'
-                    c+=1
-                cellref = tab.cell(row = r, column = c)
-                cellref.value = value
-                c+=1
-                if c == 7:
-                    r+=1
-                    c = 1           
-        wb.save(name + '_sheet.xlsx')
+        c=5
+        r=6
+        for key in data[name]["attributes"]["mental"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["attributes"]["mental"][key])
+            c-=1
+            r+=1 
+
+        c=1
+        r=11
+        for key in data[name]["abilities"]["talents"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["abilities"]["talents"][key])
+            c-=1
+            r+=1            
+
+        c=3
+        r=11
+        for key in data[name]["abilities"]["skills"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["abilities"]["skills"][key])
+            c-=1
+            r+=1    
+
+        c=5
+        r=11
+        for key in data[name]["abilities"]["knowledges"].keys():
+            cellref = tab.cell(row = r, column= c, value = key)
+            c+=1
+            cellref = tab.cell(row = r, column= c, value = data[name]["abilities"]["knowledges"][key])
+            c-=1
+            r+=1   
+
+        c=1
+        r=23
+
+        for key,value in data[name]["spheres"].items(): #unique to mage   
+            cellref = tab.cell(row = r, column = c)
+            cellref.value = key + ' :'
+            c+=1
+            cellref = tab.cell(row = r, column = c)
+            cellref.value = value
+            c+=1
+            if c == 7:
+                r+=1
+                c = 1  
+
+        c=1
+        r=29
+        for key in data[name]["backgrounds"].keys():
+            if data[name]["backgrounds"][key] =="":
+                break
+            cellref = tab.cell(row = r, column= c, value = data[name]["backgrounds"][key])
+            c+=1
+            if c==3:
+                c=1
+                r+=1
+        c=3
+        r=30
+        for key in data[name]["other traits"].keys():
+            if data[name]["other traits"][key] =="":
+                break
+            cellref = tab.cell(row = r, column= c, value = data[name]["other traits"][key])
+            c+=1
+            if c==5:
+                c=3
+                r+=1
+
+        c=5
+        r=28
+
+        for key in data[name]["merits and flaws"].keys():
+            if data[name]["merits and flaws"][key] =="":
+                break
+            cellref = tab.cell(row = r, column= c, value = data[name]["merits and flaws"][key])
+            c+=1
+            if c==7:
+                c=5
+                r+=1
+
+
+        cellref = tab.cell(row =27 , column =3, value = "arete")  #unique to mage
+        cellref = tab.cell(row =27 , column =4, value = data[name]["arete"])   #unique to mage     
+        cellref = tab.cell(row =28 , column =3, value = "willpower")  
+        cellref = tab.cell(row =28 , column =4, value = data[name]["willpower"]) 
+
+        cellref = tab.cell(row=4 , column=4, value="Attributes")  
+        cellref = tab.cell(row=5 , column=1, value="Physical") 
+        cellref = tab.cell(row=5 , column=3, value="Social") 
+        cellref = tab.cell(row=5 , column=5, value="Mental") 
+        cellref = tab.cell(row=9 , column=4, value="Abilities")
+        cellref = tab.cell(row=10 , column=1, value="Talents")         
+        cellref = tab.cell(row=10 , column=3, value="Skills")         
+        cellref = tab.cell(row=10 , column=5, value="Knowledges")
+        cellref = tab.cell(row=22 , column=4, value="Spheres")#unique to mage
+        cellref = tab.cell(row=26 , column=4, value="Advantages")
+        cellref = tab.cell(row=28 , column=1, value="Backgrounds")
+        cellref = tab.cell(row=27 , column=5, value="Merits and Flaws")
+        cellref = tab.cell(row=29 , column=3, value="Other Traits")
 
     def unwrap(self, name):#unwrap the json sheet into a unested dict
         sheet = {}
