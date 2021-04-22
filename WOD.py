@@ -791,6 +791,7 @@ class Sheet:
         cellref = tab.cell(row=28 , column=1, value="Backgrounds")
         cellref = tab.cell(row=27 , column=5, value="Merits and Flaws")
         cellref = tab.cell(row=29 , column=3, value="Other Traits")
+        wb.save(name + '_sheet.xlsx')
 
     def unwrap(self, name):#unwrap the json sheet into a unested dict
         sheet = {}
