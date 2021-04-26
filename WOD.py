@@ -515,10 +515,9 @@ class Sheet_UI:
  
 
 class Sheet:
-    #todo:  exports: pdf, excel and plain text.
+    #todo:  exports: pdf,  and plain text.
     # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
-    #edit existing character
-    #erase a character
+
 
     def __init__(self,name):
 
@@ -597,7 +596,7 @@ class Sheet:
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
 
-    def save(self):#creates a new entry in the json file. 
+    def save(self):#solves error and issues to invoke saveProc()
        
         with open('output.json') as f:
             data = json.load(f)
@@ -606,29 +605,38 @@ class Sheet:
              return
         else: #character doesnt have a 0 as name            
             if self.ui.d["name"].get() in data:
-                 messagebox.showerror("Invalid Character name.", "There is already one named "+self.ui.d["name"].get())
-                 return        
+                 res = messagebox.askquestion("Character name already exists.", "There is already one named "+self.ui.d["name"].get() + "\nDo you wish to overwrite it?")
+                 if res == 'yes':
+                     self.saveProc()
+                 elif res == 'no':
+                     return      
                 #message: do you want to overwrite the 
                 # sheet named self.ui.entry_name.get()? if yes, go to else, if no, get out of the function
                 #elif no:  commented out to implement later 
             else:              
                 #sheet isnt name 0, have a unique name or the user wants to overwrite the sheet, you can proceed to save
                 ##### Save procedure #####
-                x = ''
-                x = self.ui.d["name"].get()
-                data[x] = copy.deepcopy(data['0']) # data['0'] is the empty form for the sheets
-                #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
-                #data[x]["name"] = self.d["name"].get()
-                for key,value in data[x].items():#this is the loop to get all nested dictionaries, present in sheet0, 2 levels in
-                    if type(value) == dict:
-                        for k,v in value.items():
-                            if type(v) == dict:
-                                for p in v.keys():# p é key, x é value
-                                    data[x][key][k][p] = self.ui.d[p].get()
-                            else:
-                                data[x][key][k] = self.ui.d[k].get()   
+                self.saveProc()
+
+    def saveProc(self):#save into the json file
+        with open('output.json') as f:
+            data = json.load(f)
+        ##### Save procedure #####
+        x = ''
+        x = self.ui.d["name"].get()
+        data[x] = copy.deepcopy(data['0']) # data['0'] is the empty form for the sheets
+        #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
+        #data[x]["name"] = self.d["name"].get()
+        for key,value in data[x].items():#this is the loop to get all nested dictionaries, present in sheet0, 2 levels in
+            if type(value) == dict:
+                for k,v in value.items():
+                    if type(v) == dict:
+                        for p in v.keys():# p é key, x é value
+                            data[x][key][k][p] = self.ui.d[p].get()
                     else:
-                        data[x][key] = self.ui.d[key].get()              
+                        data[x][key][k] = self.ui.d[k].get()   
+            else:
+                data[x][key] = self.ui.d[key].get()  
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
 
@@ -644,9 +652,7 @@ class Sheet:
         elif res == 'no':
             messagebox.showinfo('Response', 'Phew! Nothing was erased.')
         else:
-            messagebox.showwarning('error', 'Something went wrong!')
-
-               
+            messagebox.showwarning('error', 'Something went wrong!')           
 
     def exportExcel(self, name):
         wb = openpyxl.Workbook()

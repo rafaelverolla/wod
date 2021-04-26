@@ -48,7 +48,6 @@ async def print(ctx, name, char):
 @bot.command(name='roll', help='roll from saved sheet \n format: difficulty name characteristic1 characteristic2(optional)')
 async def roll(ctx, diff: int, name, *args):
 
-
     sheet= {}
     sheet = unwrap(name)                 
 
@@ -80,6 +79,45 @@ async def roll(ctx, diff: int, name, *args):
     message = name + str(dice) + "\n" + str(number_of_dice) + " dice rolled for " + result
 
     await ctx.send(message)
+
+
+@bot.command(name='spec', help='roll with specialization from saved sheet \n format: difficulty name characteristic1 characteristic2(optional)')
+async def rollspec(ctx, diff: int, name, *args):
+
+    sheet= {}
+    sheet = unwrap(name)                 
+
+    number_of_dice = 0
+    for arg in args:
+        number_of_dice += int(sheet[arg])
+
+    dice = [
+        int(random.choice(range(1, 10 + 1)))
+        for _ in range(number_of_dice)
+    ]
+    dice.sort()
+    failure = dice.count(1)
+    i=0
+    success = 0
+    while number_of_dice-1 >= i:
+        if dice[i] >= diff:
+            success+= 1
+            if dice[i]== 10:
+                success+=1
+        i+=1
+
+    if success == 0 and failure>0:
+        result = "CRITICAL FAILURE"
+    else:
+        if failure>=success:
+            result= str(success- failure) + " failure"
+        else:
+            result= str(success- failure) + " successes"
+
+    message = name + str(dice) + "\n" + str(number_of_dice) + " dice rolled for " + result + " speciality"
+
+    await ctx.send(message)
+
 
 @bot.command(name='roll_dice', help='Simulates rolling any dice.')
 async def roll_dice(ctx, number_of_dice: int, number_of_sides: int):

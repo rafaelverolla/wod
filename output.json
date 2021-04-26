@@ -425,7 +425,7 @@
     "abilities": {
       "talents": {
         "art": "1",
-        "alertness": "1",
+        "alertness": "2",
         "athletics": "0",
         "awareness": "3",
         "brawl": "0",
@@ -437,9 +437,9 @@
         "subterfuge": "1"
       },
       "skills": {
-        "crafts": "1",
+        "crafts": "2",
         "drive": "0",
-        "etiquette": "1",
+        "etiquette": "3",
         "firearms": "1",
         "martialarts": "4",
         "meditation": "3",
@@ -454,7 +454,7 @@
         "computer": "0",
         "cosmology": "0",
         "enigmas": "2",
-        "esoterica": "3",
+        "esoterica": "4",
         "investigation": "2",
         "law": "0",
         "medicine": "0",
