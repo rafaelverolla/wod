@@ -8,12 +8,18 @@ import openpyxl
 #The ui must be intuitive. Also more then 1 type of character must be accepted (Mage, Werewolf and Vampire, at least).
 #The program must do all the  math automatically (Points distribution, freebies and experience), and let the user know if something is wrong.
 #A ST mode should be done, where the user can do a sheet without mathematical limits, and the NPC sheet exported should be simple, with only what the npc have dots in it.
+#things missing: specialization. dynamic sheet interface pulled from json.
 
 
 
+class Sheet:
+    #todo:  exports: pdf,  and plain text.
+    # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
 
-class Sheet_UI:
-    def __init__(self):
+
+    def __init__(self,name):
+
+        self.name = name
         self.window = root
         root.geometry('800x800')
         vlist= [0,1,2,3,4,5,6,7,8,9]
@@ -25,515 +31,197 @@ class Sheet_UI:
         r=0
         #start header
         #todo: get the object names from a external file, so you can declare them with a loop. solve how to arrange the objects in the gui.
-        label_name = Label(self.window, text = "Name", background="dark grey")
-        label_name.grid(column= c , row = r+0)
-
-        self.d["name"] = Entry(self.window)
-        self.d["name"].grid(column = c+1, row = r+0)
-
-        label_name = Label(self.window, text = "Nature", background="dark grey")
-        label_name.grid(column= c+2, row=0)
-
-        self.d["nature"] = Entry(self.window)
-        self.d["nature"].grid(column = c+3, row = r+0)
-
-        label_name = Label(self.window, text = "Faction", background="dark grey")
-        label_name.grid(column=4, row=0)
-
-        self.d["faction"] = Entry(self.window)
-        self.d["faction"].grid(column = c+5, row = r+0)
-
-        label_player = Label(self.window, text= "Player", background="dark grey")
-        label_player.grid(column = c+0, row = r+1)
-
-        self.d["player"] = Entry(self.window)
-        self.d["player"].grid(column = c+1, row = r+1)
-
-        label_demeanor = Label(self.window, text="Demeanor", background="dark grey")
-        label_demeanor.grid(column = c+2, row = r+1)
-
-        self.d["demeanor"] = Entry(self.window)
-        self.d["demeanor"].grid(column = c+3, row = r+1)
-
-        label_cabal = Label(self.window, text="Cabal", background="dark grey")
-        label_cabal.grid(column = c+4, row = r+1)
-
-        self.d["cabal"] = Entry(self.window)
-        self.d["cabal"].grid(column = c+5, row = r+1)
-
-        label_chronicle = Label(self.window, text= "Chronicle", background="dark grey")
-        label_chronicle.grid(column = c+0, row = r+2)
-
-        self.d["chronicle"] = Entry(self.window)
-        self.d["chronicle"].grid(column = c+1, row = r+2)
-
-        label_essence = Label(self.window, text="Essence", background="dark grey")
-        label_essence.grid(column = c+2, row = r+2)
-
-        self.d["essence"] = Entry(self.window)
-        self.d["essence"].grid(column = c+3, row = r+2)
-
-        label_concept = Label(self.window, text="Concept", background="dark grey")
-        label_concept.grid(column = c+4, row = r+2)
-
-        self.d["concept"] = Entry(self.window)
-        self.d["concept"].grid(column = c+5, row = r+2)
-
-        #end header
-
-        #Start of Attributes , followed column by column, instead of row by row like above.
-        Label(self.window, text= "ATTRIBUTES", background="dark grey").grid(column=c+3, row=r+3)
-
-        Label(self.window, text= "Physical", background="dark grey").grid(column=c+0, row=r+4)
-
-        self.d["phyPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
-        self.d["phyPrio"].grid(column= c+1, row=r+4)
-
-        Label(self.window, text= "Strength", background="dark grey").grid(column = c+0, row = r+5)
-
-        self.d["strength"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["strength"].grid(column = c+1, row = r+5)
-
-        Label(self.window, text="Dexterity", background="dark grey").grid(column = c+0, row = r+6)
-
-        self.d["dexterity"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["dexterity"].grid(column = c+1, row = r+6)
-
-        Label(self.window, text="Stamina", background="dark grey").grid(column = c+0, row = r+7)
-
-        self.d["stamina"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["stamina"].grid(column = c+1, row = r+7)
-
-        Label(self.window, text= "Social", background="dark grey").grid(column=c+2, row=c+4)
-
-        self.d["socPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
-        self.d["socPrio"].grid(column= c+3, row=r+4)
-
-        Label(self.window, text= "Charisma", background="dark grey").grid(column = c+2, row = r+5)
-
-        self.d["charisma"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["charisma"].grid(column = c+3, row = r+5)
-
-        Label(self.window, text="Manipulation", background="dark grey").grid(column = c+2, row = r+6)
-
-        self.d["manipulation"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["manipulation"].grid(column = c+3, row = r+6)
-
-        Label(self.window, text="Appearance", background="dark grey").grid(column = c+2, row = r+7)
-
-        self.d["appearance"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["appearance"].grid(column = c+3, row = r+7)
-
-        Label(self.window, text= "Mental", background="dark grey").grid(column=c+4, row=r+4)
-    
-        self.d["menPrio"] = ttk.Combobox(self.window, values = priolistAt, width = 5)
-        self.d["menPrio"].grid(column= c+5, row=r+4)
-
-        Label(self.window, text= "Perception", background="dark grey").grid(column = c+4, row = r+5)
-
-        self.d["perception"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["perception"].grid(column = c+5, row = r+5)
-
-        Label(self.window, text="Intelligence", background="dark grey").grid(column = c+4, row = r+6)
-
-        self.d["intelligence"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["intelligence"].grid(column = c+5, row = r+6)
-
-        Label(self.window, text="Wits", background="dark grey").grid(column = c+4, row = r+7)
-
-        self.d["wits"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["wits"].grid(column = c+5, row = r+7)
-
-        #start of the abilities
-
-        Label(self.window, text= "ABILITIES", background="dark grey").grid(column=c+3, row=r+8) 
-
-        Label(self.window, text= "Talents", background="dark grey").grid(column=c+0, row=9)
-
-        self.d["talPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
-        self.d["talPrio"].grid(column= c+1, row=r+9)
-
-        Label(self.window, text= "Alertness", background="dark grey").grid(column = c+0, row = r+11)
-
-        self.d["alertness"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["alertness"].grid(column = c+1, row = r+11)
-
-        Label(self.window, text="Art", background="dark grey").grid(column = c+0, row = r+12)
-
-        self.d["art"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["art"].grid(column = c+1, row = r+12)
-
-        Label(self.window, text="Athletics", background="dark grey").grid(column = c+0, row = r+13)
-
-        self.d["athletics"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["athletics"].grid(column = c+1, row = r+13)
-
-        Label(self.window, text= "Awareness", background="dark grey").grid(column = c+0, row = r+14)
-
-        self.d["awareness"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["awareness"].grid(column = c+1, row = r+14)
-
-        Label(self.window, text="Brawl", background="dark grey").grid(column = c+0, row = r+15)
-
-        self.d["brawl"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["brawl"].grid(column = c+1, row = r+15)
-
-        Label(self.window, text="Empathy", background="dark grey").grid(column = c+0, row = r+16)
-
-        self.d["empathy"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["empathy"].grid(column = c+1, row = r+16)
-
-        Label(self.window, text= "Expression", background="dark grey").grid(column = c+0, row = r+17)
-
-        self.d["expression"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["expression"].grid(column = c+1, row = r+17)
-
-        Label(self.window, text="Intimidation", background="dark grey").grid(column = c+0, row = r+18)
-
-        self.d["intimidation"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["intimidation"].grid(column = c+1, row = r+18)
-
-        Label(self.window, text="Leadership", background="dark grey").grid(column = c+0, row = r+19)
-
-        self.d["leadership"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["leadership"].grid(column = c+1, row = r+19)
-
-        Label(self.window, text="Streetwise", background="dark grey").grid(column = c+0, row = r+20)
-
-        self.d["streetwise"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["streetwise"].grid(column = c+1, row = r+20)
-
-        Label(self.window, text="Subterfuge", background="dark grey").grid(column = c+0, row = r+21)
-
-        self.d["subterfuge"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["subterfuge"].grid(column = c+1, row = r+21)
-
-        Label(self.window, text= "Skills", background="dark grey").grid(column=c+2, row=9) #skills
-
-        self.d["skiPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
-        self.d["skiPrio"].grid(column= c+3, row=r+9)
-
-        Label(self.window, text= "Crafts", background="dark grey").grid(column = c+2, row = r+11)
-
-        self.d["crafts"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["crafts"].grid(column = c+3, row = r+11)
-
-        Label(self.window, text="Drive", background="dark grey").grid(column = c+2, row = r+12)
-
-        self.d["drive"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["drive"].grid(column = c+3, row = r+12)
-
-        Label(self.window, text="Etiquette", background="dark grey").grid(column = c+2, row = r+13)
-
-        self.d["etiquette"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["etiquette"].grid(column = c+3, row = r+13)
-
-        Label(self.window, text= "Firearms", background="dark grey").grid(column = c+2, row = r+14)
-
-        self.d["firearms"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["firearms"].grid(column = c+3, row = r+14)
-
-        Label(self.window, text="Martial Arts", background="dark grey").grid(column = c+2, row = r+15)
-
-        self.d["martialarts"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["martialarts"].grid(column = c+3, row = r+15)
-
-        Label(self.window, text="Meditation", background="dark grey").grid(column = c+2, row = r+16)
-
-        self.d["meditation"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["meditation"].grid(column = c+3, row = r+16)
-
-        Label(self.window, text= "Melee", background="dark grey").grid(column = c+2, row = r+17)
-
-        self.d["melee"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["melee"].grid(column = c+3, row = r+17)
-
-        Label(self.window, text="Research", background="dark grey").grid(column = c+2, row = r+18)
-
-        self.d["research"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["research"].grid(column = c+3, row = r+18)
-
-        Label(self.window, text="Stealth", background="dark grey").grid(column = c+2, row = r+19)
-
-        self.d["stealth"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["stealth"].grid(column = c+3, row = r+19)
-
-        Label(self.window, text="Survival", background="dark grey").grid(column = c+2, row = r+20)
-
-        self.d["survival"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["survival"].grid(column = c+3, row = r+20)
-
-        Label(self.window, text="Technology", background="dark grey").grid(column = c+2, row = r+21)
-
-        self.d["technology"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["technology"].grid(column = c+3, row = r+21)
-
-        Label(self.window, text= "Knowledges", background="dark grey").grid(column=c+4, row=9) #knowledges
-
-        self.d["knoPrio"] = ttk.Combobox(self.window, values = priolistAb, width = 4)
-        self.d["knoPrio"].grid(column= c+5, row=r+9)
-
-        label_academics = Label(self.window, text= "Academics", background="dark grey")
-        label_academics.grid(column = c+4, row = r+11)
-
-        self.d["academics"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["academics"].grid(column = c+5, row = r+11)
-
-        label_computer = Label(self.window, text="Computer", background="dark grey")
-        label_computer.grid(column = c+4, row = r+12)
-
-        self.d["computer"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["computer"].grid(column = c+5, row = r+12)
-
-        label_cosmology = Label(self.window, text="Cosmology", background="dark grey")
-        label_cosmology.grid(column = c+4, row = r+13)
-
-        self.d["cosmology"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["cosmology"].grid(column = c+5, row = r+13)
-
-        label_enigmas = Label(self.window, text= "Enigmas", background="dark grey")
-        label_enigmas.grid(column = c+4, row = r+14)
-
-        self.d["enigmas"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["enigmas"].grid(column = c+5, row = r+14)
-
-        label_esoterica = Label(self.window, text="Esoterica", background="dark grey")
-        label_esoterica.grid(column = c+4, row = r+15)
-
-        self.d["esoterica"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["esoterica"].grid(column = c+5, row = r+15)
-
-        label_investigation = Label(self.window, text="Investigation", background="dark grey")
-        label_investigation.grid(column = c+4, row = r+16)
-
-        self.d["investigation"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["investigation"].grid(column = c+5, row = r+16)
-
-        label_law = Label(self.window, text= "Law", background="dark grey")
-        label_law.grid(column = c+4, row = r+17)
-
-        self.d["law"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["law"].grid(column = c+5, row = r+17)
-
-        label_medicine = Label(self.window, text="Medicine", background="dark grey")
-        label_medicine.grid(column = c+4, row = r+18)
-
-        self.d["medicine"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["medicine"].grid(column = c+5, row = r+18)
-
-        label_occult = Label(self.window, text="Occult", background="dark grey")
-        label_occult.grid(column = c+4, row = r+19)
-
-        self.d["occult"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["occult"].grid(column = c+5, row = r+19)
-
-        label_politics = Label(self.window, text="Politics", background="dark grey")
-        label_politics.grid(column = c+4, row = r+20)
-
-        self.d["politics"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["politics"].grid(column = c+5, row = r+20)
-
-        label_science = Label(self.window, text="Science", background="dark grey")
-        label_science.grid(column = c+4, row = r+21)
-
-        self.d["science"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["science"].grid(column = c+5, row = r+21)
-
-        Label(self.window, text= "SPHERES", background="dark grey").grid(column=c+3, row=c+22) #spheres
-
-        label_correspondence = Label(self.window, text="Correspondence", background="dark grey")
-        label_correspondence.grid(column = c+0, row = r+23)
-
-        self.d["correspondence"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["correspondence"].grid(column = c+1, row = r+23)
-
-        label_entropy = Label(self.window, text="Entropy", background="dark grey")
-        label_entropy.grid(column = c+0, row = r+24)
-
-        self.d["entropy"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["entropy"].grid(column = c+1, row = r+24)
-
-        label_forces = Label(self.window, text="Forces", background="dark grey")
-        label_forces.grid(column = c+0, row = r+25)
-
-        self.d["forces"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["forces"].grid(column = c+1, row = r+25)
-
-        label_life = Label(self.window, text="Life", background="dark grey")
-        label_life.grid(column = c+2, row = r+23)
-
-        self.d["life"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["life"].grid(column = c+3, row = r+23)
-
-        label_matter = Label(self.window, text="Matter", background="dark grey")
-        label_matter.grid(column = c+2, row = r+24)
-
-        self.d["matter"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["matter"].grid(column = c+3, row = r+24)
-
-        label_mind = Label(self.window, text="Mind", background="dark grey")
-        label_mind.grid(column = c+2, row = r+25)
-
-        self.d["mind"]= ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["mind"].grid(column = c+3, row = r+25)
-
-        label_prime = Label(self.window, text="Prime", background="dark grey")
-        label_prime.grid(column = c+4, row = r+23)
-
-        self.d["prime"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["prime"].grid(column = c+5, row = r+23)
-
-        label_spirit = Label(self.window, text="Spirit", background="dark grey")
-        label_spirit.grid(column = c+4, row = r+24)
-
-        self.d["spirit"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["spirit"].grid(column = c+5, row = r+24)
-
-        label_time = Label(self.window, text="Time", background="dark grey")
-        label_time.grid(column = c+4, row = r+25)
-
-        self.d["time"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["time"].grid(column = c+5, row = r+25)
-        self.d["time"].set("0")
-
-        Label(self.window, text = "ADVANTAGES", background="dark grey").grid(column= 3, row = r+26)
-
-        Label(self.window, text= "Backgrounds", background="dark grey").grid(column = c+0, row= 27) #backgrounds
-
-        self.d["bg1"]= Entry(self.window)
-        self.d["bg1"].grid(column = c+0, row = r+28)
-
-        self.d["bg1c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg1c"].grid(column = c+1, row = r+28)
-
-        self.d["bg2"]= Entry(self.window)
-        self.d["bg2"].grid(column = c+0, row = r+29)
-
-        self.d["bg2c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg2c"].grid(column = c+1, row = r+29)
-
-        self.d["bg3"]= Entry(self.window)
-        self.d["bg3"].grid(column = c+0, row = r+30)
-
-        self.d["bg3c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg3c"].grid(column = c+1, row = r+30)
-
-        self.d["bg4"]= Entry(self.window)
-        self.d["bg4"].grid(column = c+0, row = r+31)
-
-        self.d["bg4c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg4c"].grid(column = c+1, row = r+31)
-
-        self.d["bg5"]= Entry(self.window)
-        self.d["bg5"].grid(column = c+0, row = r+32)
-
-        self.d["bg5c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg5c"].grid(column = c+1, row = r+32)
-
-        self.d["bg6"]= Entry(self.window)
-        self.d["bg6"].grid(column = c+0, row = r+33)
-
-        self.d["bg6c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["bg6c"].grid(column = c+1, row = r+33)
-
-        Label(self.window,text= "Arete", background="dark grey").grid(column =2, row =27)   #arete
-
+        with open('output.json') as f:
+            data = json.load(f)
+
+        c=1
+        r=1
+        for key,value in data[name].items():
+            if type(data[name][key])== dict:
+                break      
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = Entry(self.window)
+            self.d[key].grid(column = c, row = r)
+            self.d[key].delete(0,END) 
+            self.d[key].insert(0,data[name][key])
+            c+=1
+            if c == 7:
+                r+=1
+                c = 1  
+        
+        Label(self.window, text= "ATTRIBUTES", background="dark grey").grid(column=4, row=6)
+        Label(self.window, text= "Physical", background="dark grey").grid(column=1, row=7)
+        Label(self.window, text= "Social", background="dark grey").grid(column=3, row=7)
+        Label(self.window, text= "Mental", background="dark grey").grid(column=5, row=7)
+        c=1
+        r=8
+        for key in data[name]["attributes"]["physical"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["attributes"]["physical"][key])
+            c-=1
+            r+=1 
+
+        c=3
+        r=8
+        for key in data[name]["attributes"]["social"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["attributes"]["social"][key])
+            c-=1
+            r+=1 
+
+        c=5
+        r=8
+        for key in data[name]["attributes"]["mental"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["attributes"]["mental"][key])
+            c-=1
+            r+=1 
+        
+        Label(self.window, text= "ABILITIES", background="dark grey").grid(column=4, row=11)
+        Label(self.window, text= "Talents", background="dark grey").grid(column=1, row=12)
+        Label(self.window, text= "Skills", background="dark grey").grid(column=3, row=12)
+        Label(self.window, text= "Knowledges", background="dark grey").grid(column=5, row=12)
+        c=1
+        r=13
+        for key in data[name]["abilities"]["talents"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["abilities"]["talents"][key])
+            c-=1
+            r+=1            
+
+        c=3
+        r=13
+        for key in data[name]["abilities"]["skills"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["abilities"]["skills"][key])
+            c-=1
+            r+=1    
+
+        c=5
+        r=13
+        for key in data[name]["abilities"]["knowledges"].keys():
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["abilities"]["knowledges"][key])
+            c-=1
+            r+=1   
+
+        c=1
+        r=25
+        Label(self.window, text= "SPHERES", background="dark grey").grid(column=4, row=24)
+        for key,value in data[name]["spheres"].items(): #unique to mage   
+            label= Label(self.window, text = key, background="dark grey")
+            label.grid(column= c , row = r)
+            c+=1
+            self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(value)
+            c+=1
+            if c == 7:
+                r+=1
+                c = 1  
+
+        Label(self.window, text= "ADVANTAGES", background="dark grey").grid(column=4, row=28)
+        Label(self.window, text= "BACKGROUNDS", background="dark grey").grid(column=1, row=29)
+        c=1
+        r=30
+        for key in data[name]["backgrounds"].keys():# no label, nome dos itens != conteudo
+            if c == 1:
+                self.d[key] = Entry(self.window)
+                self.d[key].grid(column = c, row = r)
+                self.d[key].delete(0,END) 
+                self.d[key].insert(0,data[name]["backgrounds"][key])                
+            elif c ==2:
+                self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+                self.d[key].grid(column = c, row = r)           
+                self.d[key].set(data[name]["backgrounds"][key])
+            c+=1
+            if c==3:
+                c=1
+                r+=1
+        
+        Label(self.window, text= "Arete", background="dark grey").grid(column=3, row=29)  #unique to mage 
         self.d["arete"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["arete"].grid(column = c+3, row = r+27)
-
-        Label(self.window,text= "Willpower", background="dark grey").grid(column =2, row =28)   #willpower
-
+        self.d["arete"].grid(column = 4, row = 29)           
+        self.d["arete"].set(data[name]["arete"])
+        Label(self.window, text= "Willpower", background="dark grey").grid(column=3, row=30)  #unique to mage 
         self.d["willpower"] = ttk.Combobox(self.window, values = wlist, width = 1)
-        self.d["willpower"].grid(column = c+3, row = r+28)
+        self.d["willpower"].grid(column = 4, row = 30)           
+        self.d["willpower"].set(data[name]["willpower"])
+        Label(self.window, text= "OTHER TRAITS", background="dark grey").grid(column=3, row=31)  
+        c=3
+        r=32
 
-        Label(self.window, text= "Other Traits", background="dark grey").grid(column = c+2, row= 29) #other traits
+        for key in data[name]["other traits"].keys():# no label, nome dos itens != conteudo
+            if c == 3:
+                self.d[key] = Entry(self.window)
+                self.d[key].grid(column = c, row = r)
+                self.d[key].delete(0,END) 
+                self.d[key].insert(0,data[name]["other traits"][key]) 
+            elif c == 4:
+                self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+                self.d[key].grid(column = c, row = r)           
+                self.d[key].set(data[name]["other traits"][key])
+            c+=1
+            if c==5:
+                c=3
+                r+=1    
 
-        self.d["ot1"]= Entry(self.window)
-        self.d["ot1"].grid(column = c+2, row = r+30)
+        Label(self.window, text= "MERITS AND FLAWS", background="dark grey").grid(column=5, row=29)
+        c=5
+        r=30
 
-        self.d["ot1c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["ot1c"].grid(column = c+3, row = r+30)
+        for key in data[name]["merits and flaws"].keys():
+            if c == 5:
+                self.d[key] = Entry(self.window)
+                self.d[key].grid(column = c, row = r)
+                self.d[key].delete(0,END) 
+                self.d[key].insert(0,data[name]["merits and flaws"][key])  
+            elif c == 6:
+                self.d[key] = ttk.Combobox(self.window, values = vlist, width = 1)
+                self.d[key].grid(column = c, row = r)           
+                self.d[key].set(data[name]["merits and flaws"][key])
+            c+=1
+            if c==7:
+                c=5
+                r+=1
 
-        self.d["ot2"]= Entry(self.window)
-        self.d["ot2"].grid(column = c+2, row = r+31)
-
-        self.d["ot2c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["ot2c"].grid(column = c+3, row = r+31)
-
-        self.d["ot3"]= Entry(self.window)
-        self.d["ot3"].grid(column = c+2, row =32)
-
-        self.d["ot3c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["ot3c"].grid(column = c+3, row = r+32)
-
-        self.d["ot4"]= Entry(self.window)
-        self.d["ot4"].grid(column = c+2, row = r+33)
-
-        self.d["ot4c"] = ttk.Combobox(self.window, values = vlist, width = 1)
-        self.d["ot4c"].grid(column = c+3, row = r+33)
-
-        Label(self.window, text = "Merits and flaws", background="dark grey").grid(column = c+4, row = r+27)
-
-        mflist = [-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7]
-
-        self.d["mf1"]= Entry(self.window)
-        self.d["mf1"].grid(column = c+4, row = r+28)
-
-        self.d["mf1c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf1c"].grid(column = c+5, row = r+28)
-
-        self.d["mf2"]= Entry(self.window)
-        self.d["mf2"].grid(column = c+4, row = r+29)
-
-        self.d["mf2c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf2c"].grid(column = c+5, row = r+29)
-
-        self.d["mf3"]= Entry(self.window)
-        self.d["mf3"].grid(column = c+4, row = r+30)
-
-        self.d["mf3c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf3c"].grid(column = c+5, row = r+30)
-
-        self.d["mf4"]= Entry(self.window)
-        self.d["mf4"].grid(column = c+4, row = r+31)
-
-        self.d["mf4c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf4c"].grid(column = c+5, row = r+31)
-
-        self.d["mf5"]= Entry(self.window)
-        self.d["mf5"].grid(column = c+4, row = r+32)
-
-        self.d["mf5c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf5c"].grid(column = c+5, row = r+32)
-
-        self.d["mf6"]= Entry(self.window)
-        self.d["mf6"].grid(column = c+4, row = r+33)
-
-        self.d["mf6c"] = ttk.Combobox(self.window, values = mflist, width = 2)
-        self.d["mf6c"].grid(column = c+5, row = r+33)
-
- 
-
-class Sheet:
-    #todo:  exports: pdf,  and plain text.
-    # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
-
-
-    def __init__(self,name):
-
-        self.name = name
-        self.ui = Sheet_UI()
         
         if self.name != "":
-            self.openSheet(name)
-            button_erase = Button(self.ui.window, text= "Erase", width = 10, command=  lambda y = self.name: self.erase(y) )
-            button_erase.grid(column = 0, row =34)
-            button_exportExcel = Button(self.ui.window, text= "Export for Excel", width = 10, command=  lambda y = self.name: self.exportExcel(y) )
-            button_exportExcel.grid(column = 4, row =34)
+            #self.openSheet(name) deprecated
+            button_erase = Button(self.window, text= "Erase", width = 10, command=  lambda y = self.name: self.erase(y) )
+            button_erase.grid(column = 1, row =36)
+            button_exportExcel = Button(self.window, text= "Export for Excel", width = 10, command=  lambda y = self.name: self.exportExcel(y) )
+            button_exportExcel.grid(column = 4, row =36)
         else:
             self.openSheet("0")
-        button_save = Button(self.ui.window, text= "Save", width= 20, command= self.save)
-        button_save.grid( column = 5, row = 34)
+        button_save = Button(self.window, text= "Save", width= 20, command= self.save)
+        button_save.grid( column = 5, row = 36)
 
     def openSheet(self,name):
         with open('output.json') as f:
@@ -600,22 +288,18 @@ class Sheet:
        
         with open('output.json') as f:
             data = json.load(f)
-        if self.ui.d["name"].get() == '0':
-             messagebox.showerror("Invalid Character name.", "Character name cannot be 0.")
+        if self.d["name"].get() == '0' or self.d["name"].get() == "":
+             messagebox.showerror("Invalid Character name.", "Character name cannot be 0 or empty.")
              return
         else: #character doesnt have a 0 as name            
-            if self.ui.d["name"].get() in data:
-                 res = messagebox.askquestion("Character name already exists.", "There is already one named "+self.ui.d["name"].get() + "\nDo you wish to overwrite it?")
+            if self.d["name"].get() in data:
+                 res = messagebox.askquestion("Character name already exists.", "There is already one named "+self.d["name"].get() + "\nDo you wish to overwrite it?")
                  if res == 'yes':
                      self.saveProc()
                  elif res == 'no':
                      return      
-                #message: do you want to overwrite the 
-                # sheet named self.ui.entry_name.get()? if yes, go to else, if no, get out of the function
-                #elif no:  commented out to implement later 
             else:              
-                #sheet isnt name 0, have a unique name or the user wants to overwrite the sheet, you can proceed to save
-                ##### Save procedure #####
+
                 self.saveProc()
 
     def saveProc(self):#save into the json file
@@ -819,18 +503,17 @@ class Sheet:
 
 """
     def validateNewCharacter(self):
-        self.save()
+        self.saveProc(self)
         with open('output.json') as f:
-            data = json.load(f)
-        
+            data = json.load(f)       
 
         self.ui["name"](state='disabled')
         name = ""
         name = data["name"]["name"]
         if self.sum(name, "spheres")<6:
-            #messagem : faltam self.sum(name, "spheres") - 6*(-1) pts de esferas
+            message.showerror("Missing " +  str(self.sum(name, "spheres") - 6*(-1)) +" points in spheres")
         elif self.sum(name, "spheres")>6:
-            #message: sobram self.sum(name, "spheres") -6 pts de esferas
+            message.showerror("Overspent "+ self.sum(name, "spheres")-6 + " dots in spheres")
         if self.sum(name, "backgrounds")<7:
             #message: faltam self.sum(name, "backgrounds") -7*(-1) pts de bg
         elif self.sum(name, "backgrounds")>7:
@@ -874,7 +557,7 @@ class Window(Frame):
             data = json.load(f)
         
         fileMenu = Menu(menu, tearoff=False)
-        empty = ""
+        empty = "0"
         fileMenu.add_command(label="New", command = lambda y=empty :Sheet(y))
         fileMenu.add_command(label="Exit", command=self.exitProgram)
         menu.add_cascade(label="File", menu=fileMenu)
@@ -882,16 +565,12 @@ class Window(Frame):
         openMenu = Menu(menu, tearoff=False)
         for key in data.keys():
             if key == "0":
-                print("")#how to instruct do nothing?
+                pass
             else:
                 openMenu.add_command(label=key, command=lambda y=key :Sheet(y))
         menu.add_cascade(label="Open", menu=openMenu)
 
-        exportMenu = Menu(menu, tearoff=False)
-        exportMenu.add_command(label="Export to PDF")
-        exportMenu.add_command(label="Export to Excel")
-        exportMenu.add_command(label="Export to plain text")
-        menu.add_cascade(label="Export", menu=exportMenu)
+
 
     def exitProgram(self):
         exit()

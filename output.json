@@ -790,5 +790,137 @@
         "knoPrio": "5"
       }
     }
+  },
+  "Bon": {
+    "name": "Bon",
+    "nature": "survivor",
+    "faction": "none",
+    "player": "none",
+    "demeanor": "architet",
+    "cabal": "none",
+    "chronicle": "rafael",
+    "essence": "primordial",
+    "concept": "lich",
+    "attributes": {
+      "physical": {
+        "strength": "1",
+        "dexterity": "3",
+        "stamina": "4"
+      },
+      "social": {
+        "charisma": "3",
+        "manipulation": "5",
+        "appearance": "1"
+      },
+      "mental": {
+        "perception": "4",
+        "intelligence": "5",
+        "wits": "5"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "0",
+        "alertness": "3",
+        "athletics": "2",
+        "awareness": "5",
+        "brawl": "1",
+        "empathy": "3",
+        "expression": "4",
+        "intimidation": "3",
+        "leadership": "2",
+        "streetwise": "3",
+        "subterfuge": "5"
+      },
+      "skills": {
+        "crafts": "5",
+        "drive": "0",
+        "etiquette": "3",
+        "firearms": "0",
+        "martialarts": "0",
+        "meditation": "5",
+        "melee": "3",
+        "research": "5",
+        "stealth": "2",
+        "survival": "4",
+        "technology": "0"
+      },
+      "knowledges": {
+        "academics": "0",
+        "computer": "0",
+        "cosmology": "4",
+        "enigmas": "5",
+        "esoterica": "5",
+        "investigation": "4",
+        "law": "0",
+        "medicine": "5",
+        "occult": "5",
+        "politics": "3",
+        "science": "1"
+      }
+    },
+    "spheres": {
+      "correspondence": "3",
+      "entropy": "5",
+      "forces": "2",
+      "life": "5",
+      "matter": "4",
+      "mind": "2",
+      "prime": "3",
+      "spirit": "4",
+      "time": "2"
+    },
+    "arete": "7",
+    "willpower": "9",
+    "backgrounds": {
+      "bg1": "",
+      "bg1c": "",
+      "bg2": "",
+      "bg2c": "",
+      "bg3": "",
+      "bg3c": "",
+      "bg4": "",
+      "bg4c": "",
+      "bg5": "",
+      "bg5c": "",
+      "bg6": "",
+      "bg6c": ""
+    },
+    "other traits": {
+      "ot1": "dox permanente",
+      "ot1c": "3",
+      "ot2": "",
+      "ot2c": "",
+      "ot3": "",
+      "ot3c": "",
+      "ot4": "",
+      "ot4c": ""
+    },
+    "merits and flaws": {
+      "mf1": "",
+      "mf1c": "",
+      "mf2": "",
+      "mf2c": "",
+      "mf3": "",
+      "mf3c": "",
+      "mf4": "",
+      "mf4c": "",
+      "mf5": "",
+      "mf5c": "",
+      "mf6": "",
+      "mf6c": ""
+    },
+    "history": {
+      "freebies": {},
+      "xp": {},
+      "character creation": {
+        "phyPrio": "7",
+        "socPrio": "5",
+        "menPrio": "3",
+        "talPrio": "13",
+        "skiPrio": "9",
+        "knoPrio": "5"
+      }
+    }
   }
 }
