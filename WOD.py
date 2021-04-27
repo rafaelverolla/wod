@@ -10,8 +10,6 @@ import openpyxl
 #A ST mode should be done, where the user can do a sheet without mathematical limits, and the NPC sheet exported should be simple, with only what the npc have dots in it.
 #things missing: specialization. dynamic sheet interface pulled from json.
 
-
-
 class Sheet:
     #todo:  exports: pdf,  and plain text.
     # character creation: go to the proccess of making a character, and validating it. (7/5/3, 13/9/5, 5will, 7 bg, 15 freebies)
@@ -24,8 +22,7 @@ class Sheet:
         root.geometry('800x800')
         vlist= [0,1,2,3,4,5,6,7,8,9]
         wlist= [5,6,7,8,9,10]
-        priolistAt= [7,5,3]
-        priolistAb=[13,9,5]
+
         self.d ={}
         c=0
         r=0
@@ -37,7 +34,7 @@ class Sheet:
         c=1
         r=1
         for key,value in data[name].items():
-            if type(data[name][key])== dict:
+            if type(data[name][key])== dict:#so it gets only the first header itens
                 break      
             label= Label(self.window, text = key, background="dark grey")
             label.grid(column= c , row = r)
@@ -55,6 +52,7 @@ class Sheet:
         Label(self.window, text= "Physical", background="dark grey").grid(column=1, row=7)
         Label(self.window, text= "Social", background="dark grey").grid(column=3, row=7)
         Label(self.window, text= "Mental", background="dark grey").grid(column=5, row=7)
+
         c=1
         r=8
         for key in data[name]["attributes"]["physical"].keys():
@@ -95,6 +93,22 @@ class Sheet:
         Label(self.window, text= "Talents", background="dark grey").grid(column=1, row=12)
         Label(self.window, text= "Skills", background="dark grey").grid(column=3, row=12)
         Label(self.window, text= "Knowledges", background="dark grey").grid(column=5, row=12)
+        
+        priolistAt= [[7,5,3],[13,9,5]]
+        l=0 
+        c=2
+        r=7       
+        for key in data[name]["history"]["character creation"].keys():
+            self.d[key] = ttk.Combobox(self.window, values = priolistAt[l], width = l+1)
+            self.d[key].grid(column = c, row = r)           
+            self.d[key].set(data[name]["history"]["character creation"][key])
+            c+=2
+            if c== 8:
+                c=2
+                r=12
+                l=1
+
+
         c=1
         r=13
         for key in data[name]["abilities"]["talents"].keys():
@@ -210,20 +224,15 @@ class Sheet:
             if c==7:
                 c=5
                 r+=1
-
         
-        if self.name != "":
-            #self.openSheet(name) deprecated
-            button_erase = Button(self.window, text= "Erase", width = 10, command=  lambda y = self.name: self.erase(y) )
-            button_erase.grid(column = 1, row =36)
-            button_exportExcel = Button(self.window, text= "Export for Excel", width = 10, command=  lambda y = self.name: self.exportExcel(y) )
-            button_exportExcel.grid(column = 4, row =36)
-        else:
-            self.openSheet("0")
+        button_erase = Button(self.window, text= "Erase", width = 10, command= self.erase )
+        button_erase.grid(column = 1, row =36)
+        button_exportExcel = Button(self.window, text= "Export for Excel", width = 10, command= self.exportExcel)
+        button_exportExcel.grid(column = 4, row =36)
         button_save = Button(self.window, text= "Save", width= 20, command= self.save)
         button_save.grid( column = 5, row = 36)
 
-    def openSheet(self,name):
+    def openSheet(self,name): #deprecated 
         with open('output.json') as f:
             data = json.load(f)
 
@@ -307,29 +316,33 @@ class Sheet:
             data = json.load(f)
         ##### Save procedure #####
         x = ''
-        x = self.ui.d["name"].get()
+        x = self.d["name"].get()
         data[x] = copy.deepcopy(data['0']) # data['0'] is the empty form for the sheets
         #bipty bopty get all of the data from the self.ui and shove into data[nameofthesheet]opty
         #data[x]["name"] = self.d["name"].get()
-        for key,value in data[x].items():#this is the loop to get all nested dictionaries, present in sheet0, 2 levels in
+        for key,value in data[x].items():#this is the loop to get all nested dictionaries, present in sheet, 2 levels in
             if type(value) == dict:
                 for k,v in value.items():
                     if type(v) == dict:
                         for p in v.keys():# p é key, x é value
-                            data[x][key][k][p] = self.ui.d[p].get()
+                            data[x][key][k][p] = self.d[p].get()
                     else:
-                        data[x][key][k] = self.ui.d[k].get()   
+                        data[x][key][k] = self.d[k].get()   
             else:
-                data[x][key] = self.ui.d[key].get()  
+                data[x][key] = self.d[key].get()  
         with open('output.json', 'w') as f: #dump the changes into the json file
             json.dump(data, f, indent = 2)
 
-    def erase(self, name):
+    def erase(self):
+
+        if self.d["name"].get() =="0":
+            messagebox.showinfo('Response', 'Cannot delete sheet 0')
+            return
         res = messagebox.askquestion('askquestion', 'Are you sure you want to erase the sheet?')
         if res == 'yes':
             with open('output.json') as f:
                 data = json.load(f)
-            del data[name]
+            del data[self.d["name"].get()]
             with open('output.json', 'w') as f: #dump the changes into the json file
                 json.dump(data, f, indent = 2)
             messagebox.showinfo('Response', 'Sheet deleted!')
@@ -338,7 +351,9 @@ class Sheet:
         else:
             messagebox.showwarning('error', 'Something went wrong!')           
 
-    def exportExcel(self, name):
+    def exportExcel(self):
+        
+        name = self.d["name"].get()
         wb = openpyxl.Workbook()
         tab = wb.active #tab is the name used for the excel sheet, cant be named sheet because sheet is used for character sheet
         tab.title = name    
