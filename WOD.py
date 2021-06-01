@@ -9,7 +9,7 @@ import openpyxl
 #The ui must be intuitive. Also more then 1 type of character must be accepted (Mage, Werewolf and Vampire, at least).
 #The program must do all the  math automatically (Points distribution, freebies and experience), and let the user know if something is wrong.
 #A ST mode should be done, where the user can do a sheet without mathematical limits, and the NPC sheet exported should be simple, with only what the npc have dots in it.
-#things missing: specialization. dynamic sheet interface pulled from json.
+#things missing: specialization. 
 
 class Sheet:
     #todo:  exports: pdf,  and plain text.
