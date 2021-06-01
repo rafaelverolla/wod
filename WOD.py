@@ -1,6 +1,7 @@
 from tkinter import Button, Toplevel, Entry, Label, Tk, messagebox, Menu, Frame, END
 from tkinter import ttk
 import copy
+import os
 import json
 import openpyxl
 
@@ -351,8 +352,7 @@ class Sheet:
         else:
             messagebox.showwarning('error', 'Something went wrong!')           
 
-    def exportExcel(self):#need to save on a folder and also I need to include the date on the file name. also it needs to let the
-        #user know that the files was correctly saved
+    def exportExcel(self):
         
         name = self.d["name"].get()
         wb = openpyxl.Workbook()
@@ -494,7 +494,13 @@ class Sheet:
         cellref = tab.cell(row=28 , column=1, value="Backgrounds")
         cellref = tab.cell(row=27 , column=5, value="Merits and Flaws")
         cellref = tab.cell(row=29 , column=3, value="Other Traits")
-        wb.save(name + '_sheet.xlsx')
+
+        excel_export_dir= '.\\excel_export\\' 
+        if os.path.exists(excel_export_dir) == False:
+            os.makedirs(excel_export_dir)
+
+        wb.save(excel_export_dir + name + '_sheet.xlsx')
+        messagebox.showinfo('Sheet Exported!','Sheet exported as ' + name + '_sheet.xlsx')
 
     def unwrap(self, name):#unwrap the json sheet into a unested dict
         sheet = {}
