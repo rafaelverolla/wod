@@ -585,7 +585,7 @@
         "academics": "0",
         "computer": "0",
         "cosmology": "1",
-        "enigmas": "0",
+        "enigmas": "1",
         "esoterica": "3",
         "investigation": "0",
         "law": "0",
@@ -870,7 +870,7 @@
       "spirit": "4",
       "time": "2"
     },
-    "arete": "7",
+    "arete": "6",
     "willpower": "9",
     "backgrounds": {
       "bg1": "",
@@ -916,6 +916,402 @@
       "character creation": {
         "phyPrio": "7",
         "socPrio": "7",
+        "menPrio": "3",
+        "talPrio": "13",
+        "skiPrio": "9",
+        "knoPrio": "5"
+      }
+    }
+  },
+  "np1": {
+    "name": "np1",
+    "nature": "",
+    "faction": "montagna sacra/verbena",
+    "player": "rafael",
+    "demeanor": "",
+    "cabal": "the crows",
+    "chronicle": "",
+    "essence": "",
+    "concept": "cachorreiro",
+    "attributes": {
+      "physical": {
+        "strength": "3",
+        "dexterity": "3",
+        "stamina": "2"
+      },
+      "social": {
+        "charisma": "3",
+        "manipulation": "2",
+        "appearance": "2"
+      },
+      "mental": {
+        "perception": "4",
+        "intelligence": "3",
+        "wits": "4"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "0",
+        "alertness": "0",
+        "athletics": "0",
+        "awareness": "0",
+        "brawl": "0",
+        "empathy": "0",
+        "expression": "2",
+        "intimidation": "0",
+        "leadership": "3",
+        "streetwise": "0",
+        "subterfuge": "0"
+      },
+      "skills": {
+        "crafts": "0",
+        "drive": "0",
+        "etiquette": "0",
+        "firearms": "2",
+        "martialarts": "0",
+        "meditation": "0",
+        "melee": "2",
+        "research": "0",
+        "stealth": "0",
+        "survival": "0",
+        "technology": "0"
+      },
+      "knowledges": {
+        "academics": "0",
+        "computer": "1",
+        "cosmology": "1",
+        "enigmas": "3",
+        "esoterica": "2",
+        "investigation": "3",
+        "law": "0",
+        "medicine": "0",
+        "occult": "0",
+        "politics": "0",
+        "science": "0"
+      }
+    },
+    "spheres": {
+      "correspondence": "2",
+      "entropy": "1",
+      "forces": "0",
+      "life": "3",
+      "matter": "0",
+      "mind": "3",
+      "prime": "1",
+      "spirit": "0",
+      "time": "0"
+    },
+    "arete": "3",
+    "willpower": "6",
+    "backgrounds": {
+      "bg1": "",
+      "bg1c": "",
+      "bg2": "",
+      "bg2c": "",
+      "bg3": "",
+      "bg3c": "",
+      "bg4": "",
+      "bg4c": "",
+      "bg5": "",
+      "bg5c": "",
+      "bg6": "",
+      "bg6c": ""
+    },
+    "other traits": {
+      "ot1": "animal empathy",
+      "ot1c": "3",
+      "ot2": "",
+      "ot2c": "",
+      "ot3": "",
+      "ot3c": "",
+      "ot4": "",
+      "ot4c": ""
+    },
+    "merits and flaws": {
+      "mf1": "",
+      "mf1c": "",
+      "mf2": "",
+      "mf2c": "",
+      "mf3": "",
+      "mf3c": "",
+      "mf4": "",
+      "mf4c": "",
+      "mf5": "",
+      "mf5c": "",
+      "mf6": "",
+      "mf6c": ""
+    },
+    "history": {
+      "freebies": {},
+      "xp": {},
+      "character creation": {
+        "phyPrio": "7",
+        "socPrio": "5",
+        "menPrio": "3",
+        "talPrio": "13",
+        "skiPrio": "9",
+        "knoPrio": "5"
+      }
+    }
+  },
+  "np2": {
+    "name": "np2",
+    "nature": "",
+    "faction": "montagna sacra/euthie",
+    "player": "rafael",
+    "demeanor": "",
+    "cabal": "the crows",
+    "chronicle": "",
+    "essence": "",
+    "concept": "guerrilheiro",
+    "attributes": {
+      "physical": {
+        "strength": "3",
+        "dexterity": "4",
+        "stamina": "4"
+      },
+      "social": {
+        "charisma": "1",
+        "manipulation": "3",
+        "appearance": "1"
+      },
+      "mental": {
+        "perception": "5",
+        "intelligence": "3",
+        "wits": "4"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "0",
+        "alertness": "0",
+        "athletics": "0",
+        "awareness": "3",
+        "brawl": "3",
+        "empathy": "0",
+        "expression": "2",
+        "intimidation": "0",
+        "leadership": "3",
+        "streetwise": "0",
+        "subterfuge": "0"
+      },
+      "skills": {
+        "crafts": "0",
+        "drive": "0",
+        "etiquette": "0",
+        "firearms": "3",
+        "martialarts": "0",
+        "meditation": "0",
+        "melee": "3",
+        "research": "0",
+        "stealth": "0",
+        "survival": "0",
+        "technology": "3"
+      },
+      "knowledges": {
+        "academics": "0",
+        "computer": "1",
+        "cosmology": "1",
+        "enigmas": "3",
+        "esoterica": "0",
+        "investigation": "3",
+        "law": "0",
+        "medicine": "0",
+        "occult": "3",
+        "politics": "2",
+        "science": "2"
+      }
+    },
+    "spheres": {
+      "correspondence": "3",
+      "entropy": "2",
+      "forces": "3",
+      "life": "0",
+      "matter": "2",
+      "mind": "0",
+      "prime": "0",
+      "spirit": "0",
+      "time": "0"
+    },
+    "arete": "3",
+    "willpower": "7",
+    "backgrounds": {
+      "bg1": "",
+      "bg1c": "",
+      "bg2": "",
+      "bg2c": "",
+      "bg3": "",
+      "bg3c": "",
+      "bg4": "",
+      "bg4c": "",
+      "bg5": "",
+      "bg5c": "",
+      "bg6": "",
+      "bg6c": ""
+    },
+    "other traits": {
+      "ot1": "animal empathy",
+      "ot1c": "3",
+      "ot2": "",
+      "ot2c": "",
+      "ot3": "",
+      "ot3c": "",
+      "ot4": "",
+      "ot4c": ""
+    },
+    "merits and flaws": {
+      "mf1": "",
+      "mf1c": "",
+      "mf2": "",
+      "mf2c": "",
+      "mf3": "",
+      "mf3c": "",
+      "mf4": "",
+      "mf4c": "",
+      "mf5": "",
+      "mf5c": "",
+      "mf6": "",
+      "mf6c": ""
+    },
+    "history": {
+      "freebies": {},
+      "xp": {},
+      "character creation": {
+        "phyPrio": "7",
+        "socPrio": "5",
+        "menPrio": "3",
+        "talPrio": "13",
+        "skiPrio": "9",
+        "knoPrio": "5"
+      }
+    }
+  },
+  "np3": {
+    "name": "np3",
+    "nature": "",
+    "faction": "montagna sacra/dreamspeaker",
+    "player": "rafael",
+    "demeanor": "",
+    "cabal": "lider do the crows",
+    "chronicle": "rafael",
+    "essence": "shama",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "2",
+        "dexterity": "2",
+        "stamina": "2"
+      },
+      "social": {
+        "charisma": "4",
+        "manipulation": "4",
+        "appearance": "1"
+      },
+      "mental": {
+        "perception": "4",
+        "intelligence": "2",
+        "wits": "2"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "0",
+        "alertness": "0",
+        "athletics": "0",
+        "awareness": "4",
+        "brawl": "0",
+        "empathy": "0",
+        "expression": "1",
+        "intimidation": "3",
+        "leadership": "0",
+        "streetwise": "2",
+        "subterfuge": "3"
+      },
+      "skills": {
+        "crafts": "0",
+        "drive": "0",
+        "etiquette": "2",
+        "firearms": "1",
+        "martialarts": "0",
+        "meditation": "3",
+        "melee": "2",
+        "research": "0",
+        "stealth": "2",
+        "survival": "3",
+        "technology": "0"
+      },
+      "knowledges": {
+        "academics": "0",
+        "computer": "0",
+        "cosmology": "3",
+        "enigmas": "0",
+        "esoterica": "3",
+        "investigation": "0",
+        "law": "0",
+        "medicine": "2",
+        "occult": "2",
+        "politics": "1",
+        "science": "0"
+      }
+    },
+    "spheres": {
+      "correspondence": "0",
+      "entropy": "0",
+      "forces": "0",
+      "life": "3",
+      "matter": "0",
+      "mind": "1",
+      "prime": "2",
+      "spirit": "4",
+      "time": "0"
+    },
+    "arete": "4",
+    "willpower": "7",
+    "backgrounds": {
+      "bg1": "",
+      "bg1c": "",
+      "bg2": "",
+      "bg2c": "",
+      "bg3": "",
+      "bg3c": "",
+      "bg4": "",
+      "bg4c": "",
+      "bg5": "",
+      "bg5c": "",
+      "bg6": "",
+      "bg6c": ""
+    },
+    "other traits": {
+      "ot1": "",
+      "ot1c": "",
+      "ot2": "",
+      "ot2c": "",
+      "ot3": "",
+      "ot3c": "",
+      "ot4": "",
+      "ot4c": ""
+    },
+    "merits and flaws": {
+      "mf1": "",
+      "mf1c": "",
+      "mf2": "",
+      "mf2c": "",
+      "mf3": "",
+      "mf3c": "",
+      "mf4": "",
+      "mf4c": "",
+      "mf5": "",
+      "mf5c": "",
+      "mf6": "",
+      "mf6c": ""
+    },
+    "history": {
+      "freebies": {},
+      "xp": {},
+      "character creation": {
+        "phyPrio": "7",
+        "socPrio": "5",
         "menPrio": "3",
         "talPrio": "13",
         "skiPrio": "9",

@@ -351,7 +351,8 @@ class Sheet:
         else:
             messagebox.showwarning('error', 'Something went wrong!')           
 
-    def exportExcel(self):
+    def exportExcel(self):#need to save on a folder and also I need to include the date on the file name. also it needs to let the
+        #user know that the files was correctly saved
         
         name = self.d["name"].get()
         wb = openpyxl.Workbook()
@@ -467,7 +468,6 @@ class Sheet:
 
         c=5
         r=28
-
         for key in data[name]["merits and flaws"].keys():
             if data[name]["merits and flaws"][key] =="":
                 break
@@ -477,12 +477,10 @@ class Sheet:
                 c=5
                 r+=1
 
-
         cellref = tab.cell(row =27 , column =3, value = "arete")  #unique to mage
         cellref = tab.cell(row =27 , column =4, value = data[name]["arete"])   #unique to mage     
         cellref = tab.cell(row =28 , column =3, value = "willpower")  
         cellref = tab.cell(row =28 , column =4, value = data[name]["willpower"]) 
-
         cellref = tab.cell(row=4 , column=4, value="Attributes")  
         cellref = tab.cell(row=5 , column=1, value="Physical") 
         cellref = tab.cell(row=5 , column=3, value="Social") 
