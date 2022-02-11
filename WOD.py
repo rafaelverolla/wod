@@ -502,7 +502,7 @@ class Sheet:
         wb.save(excel_export_dir + name + '_sheet.xlsx')
         messagebox.showinfo('Sheet Exported!','Sheet exported as ' + name + '_sheet.xlsx')
 
-    def unwrap(self, name):#unwrap the json sheet into a unested dict
+    def unwrap(self, name):#unwrap the json sheet into a non-nested dict
         sheet = {}
         with open('output.json') as f:
             data = json.load(f)

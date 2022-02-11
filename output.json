@@ -263,138 +263,6 @@
       }
     }
   },
-  "uli": {
-    "name": "uli",
-    "nature": "dabbler",
-    "faction": "cult of extasy",
-    "player": "dani",
-    "demeanor": "trickster",
-    "cabal": "",
-    "chronicle": "rafael",
-    "essence": "dynamic",
-    "concept": "capoeira",
-    "attributes": {
-      "physical": {
-        "strength": "3",
-        "dexterity": "3",
-        "stamina": "4"
-      },
-      "social": {
-        "charisma": "3",
-        "manipulation": "1",
-        "appearance": "2"
-      },
-      "mental": {
-        "perception": "3",
-        "intelligence": "3",
-        "wits": "2"
-      }
-    },
-    "abilities": {
-      "talents": {
-        "art": "2",
-        "alertness": "2",
-        "athletics": "3",
-        "awareness": "0",
-        "brawl": "0",
-        "empathy": "2",
-        "expression": "0",
-        "intimidation": "0",
-        "leadership": "0",
-        "streetwise": "2",
-        "subterfuge": "0"
-      },
-      "skills": {
-        "crafts": "0",
-        "drive": "2",
-        "etiquette": "0",
-        "firearms": "0",
-        "martialarts": "3",
-        "meditation": "2",
-        "melee": "0",
-        "research": "0",
-        "stealth": "0",
-        "survival": "2",
-        "technology": "0"
-      },
-      "knowledges": {
-        "academics": "0",
-        "computer": "0",
-        "cosmology": "0",
-        "enigmas": "2",
-        "esoterica": "3",
-        "investigation": "0",
-        "law": "0",
-        "medicine": "1",
-        "occult": "2",
-        "politics": "0",
-        "science": "0"
-      }
-    },
-    "spheres": {
-      "correspondence": "2",
-      "entropy": "3",
-      "forces": "0",
-      "life": "3",
-      "matter": "0",
-      "mind": "3",
-      "prime": "0",
-      "spirit": "0",
-      "time": "0"
-    },
-    "arete": "3",
-    "willpower": "9",
-    "backgrounds": {
-      "bg1": "avatar",
-      "bg1c": "3",
-      "bg2": "cult",
-      "bg2c": "1",
-      "bg3": "resources",
-      "bg3c": "2",
-      "bg4": "arcanum",
-      "bg4c": "2",
-      "bg5": "contacts",
-      "bg5c": "1",
-      "bg6": "sanctum",
-      "bg6c": "1"
-    },
-    "other traits": {
-      "ot1": "",
-      "ot1c": "",
-      "ot2": "",
-      "ot2c": "",
-      "ot3": "",
-      "ot3c": "",
-      "ot4": "",
-      "ot4c": ""
-    },
-    "merits and flaws": {
-      "mf1": "spanish, english",
-      "mf1c": "2",
-      "mf2": "daredevil",
-      "mf2c": "3",
-      "mf3": "adduction adrenaline",
-      "mf3c": "-1",
-      "mf4": "impatient",
-      "mf4c": "-1",
-      "mf5": "compulsive speech",
-      "mf5c": "-1",
-      "mf6": "family issue",
-      "mf6c": "-2"
-    },
-    "history": {
-      "freebies": {},
-      "xp": {},
-      "character creation": {
-        "phyPrio": "7",
-        "socPrio": "5",
-        "menPrio": "3",
-        "talPrio": "13",
-        "skiPrio": "9",
-        "knoPrio": "5"
-      }
-    }
-  },
   "nat": {
     "name": "nat",
     "nature": "crusader",
@@ -407,7 +275,7 @@
     "concept": "",
     "attributes": {
       "physical": {
-        "strength": "3",
+        "strength": "4",
         "dexterity": "4",
         "stamina": "3"
       },
@@ -549,9 +417,9 @@
         "appearance": "5"
       },
       "mental": {
-        "perception": "1",
-        "intelligence": "1",
-        "wits": "1"
+        "perception": "5",
+        "intelligence": "3",
+        "wits": "3"
       }
     },
     "abilities": {
@@ -706,11 +574,11 @@
         "etiquette": "1",
         "firearms": "0",
         "martialarts": "0",
-        "meditation": "0",
+        "meditation": "2",
         "melee": "0",
         "research": "0",
         "stealth": "0",
-        "survival": "0",
+        "survival": "2",
         "technology": "0"
       },
       "knowledges": {
@@ -722,24 +590,24 @@
         "investigation": "1",
         "law": "0",
         "medicine": "2",
-        "occult": "3",
+        "occult": "4",
         "politics": "0",
         "science": "0"
       }
     },
     "spheres": {
-      "correspondence": "3",
+      "correspondence": "4",
       "entropy": "1",
       "forces": "0",
-      "life": "3",
+      "life": "4",
       "matter": "0",
       "mind": "2",
-      "prime": "2",
+      "prime": "3",
       "spirit": "0",
       "time": "0"
     },
-    "arete": "3",
-    "willpower": "8",
+    "arete": "5",
+    "willpower": "9",
     "backgrounds": {
       "bg1": "avatar",
       "bg1c": "2",
@@ -1277,6 +1145,138 @@
       "bg3c": "",
       "bg4": "",
       "bg4c": "",
+      "bg5": "",
+      "bg5c": "",
+      "bg6": "",
+      "bg6c": ""
+    },
+    "other traits": {
+      "ot1": "",
+      "ot1c": "",
+      "ot2": "",
+      "ot2c": "",
+      "ot3": "",
+      "ot3c": "",
+      "ot4": "",
+      "ot4c": ""
+    },
+    "merits and flaws": {
+      "mf1": "",
+      "mf1c": "",
+      "mf2": "",
+      "mf2c": "",
+      "mf3": "",
+      "mf3c": "",
+      "mf4": "",
+      "mf4c": "",
+      "mf5": "",
+      "mf5c": "",
+      "mf6": "",
+      "mf6c": ""
+    },
+    "history": {
+      "freebies": {},
+      "xp": {},
+      "character creation": {
+        "phyPrio": "7",
+        "socPrio": "5",
+        "menPrio": "3",
+        "talPrio": "13",
+        "skiPrio": "9",
+        "knoPrio": "5"
+      }
+    }
+  },
+  "san": {
+    "name": "san",
+    "nature": "survivor",
+    "faction": "euthanatoi",
+    "player": "daniele",
+    "demeanor": "benefactor",
+    "cabal": "",
+    "chronicle": "",
+    "essence": "pattern",
+    "concept": "",
+    "attributes": {
+      "physical": {
+        "strength": "3",
+        "dexterity": "4",
+        "stamina": "2"
+      },
+      "social": {
+        "charisma": "4",
+        "manipulation": "2",
+        "appearance": "2"
+      },
+      "mental": {
+        "perception": "3",
+        "intelligence": "3",
+        "wits": "2"
+      }
+    },
+    "abilities": {
+      "talents": {
+        "art": "2",
+        "alertness": "2",
+        "athletics": "0",
+        "awareness": "2",
+        "brawl": "1",
+        "empathy": "2",
+        "expression": "0",
+        "intimidation": "0",
+        "leadership": "0",
+        "streetwise": "2",
+        "subterfuge": "1"
+      },
+      "skills": {
+        "crafts": "0",
+        "drive": "2",
+        "etiquette": "0",
+        "firearms": "3",
+        "martialarts": "0",
+        "meditation": "2",
+        "melee": "4",
+        "research": "1",
+        "stealth": "2",
+        "survival": "0",
+        "technology": "2"
+      },
+      "knowledges": {
+        "academics": "0",
+        "computer": "0",
+        "cosmology": "2",
+        "enigmas": "2",
+        "esoterica": "2",
+        "investigation": "0",
+        "law": "0",
+        "medicine": "0",
+        "occult": "2",
+        "politics": "0",
+        "science": "0"
+      }
+    },
+    "spheres": {
+      "correspondence": "0",
+      "entropy": "4",
+      "forces": "0",
+      "life": "0",
+      "matter": "4",
+      "mind": "0",
+      "prime": "2",
+      "spirit": "2",
+      "time": "0"
+    },
+    "arete": "4",
+    "willpower": "8",
+    "backgrounds": {
+      "bg1": "avatar",
+      "bg1c": "3",
+      "bg2": "resources",
+      "bg2c": "2",
+      "bg3": "contacts",
+      "bg3c": "2",
+      "bg4": "wonder",
+      "bg4c": "2",
       "bg5": "",
       "bg5c": "",
       "bg6": "",
